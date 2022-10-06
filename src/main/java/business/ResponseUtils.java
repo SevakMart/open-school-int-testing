@@ -36,6 +36,12 @@ public class ResponseUtils {
                 .extract()
                 .header("Authorization");
     }
+
+    public static int getStatusCodeFromResponse() {
+        return getResponse()
+                .extract()
+                .statusCode();
+    }
     public static void validateResponseAgainstJSONSchema(ValidatableResponse response, String filepath){
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
