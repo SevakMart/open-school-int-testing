@@ -1,0 +1,4 @@
+{
+  "psd": "${psd}",
+  "email": "${email}"
+}
