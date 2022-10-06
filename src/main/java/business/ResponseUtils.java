@@ -1,5 +1,9 @@
 package business;
 
+import com.github.fge.jsonschema.SchemaVersion;
+import com.github.fge.jsonschema.cfg.ValidationConfiguration;
+import com.github.fge.jsonschema.main.JsonSchemaFactory;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
 
 public class ResponseUtils {
@@ -31,5 +35,20 @@ public class ResponseUtils {
         return getResponse()
                 .extract()
                 .header("Authorization");
+    }
+    public static void validateResponseAgainstJSONSchema(ValidatableResponse response, String filepath){
+        JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
+                .newBuilder()
+                .setValidationConfiguration(ValidationConfiguration
+                        .newBuilder()
+                        .setDefaultVersion(SchemaVersion.DRAFTV4)
+                        .freeze())
+                .freeze();
+
+        response
+                .assertThat()
+                .body(JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath(filepath)
+                        .using(jsonSchemaFactory));
     }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "psd": {
+      "type": "string",
+      "minimum": 8,
+      "pattern": "(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]"
+    },
+    "email": {
+      "type": "string",
+      "minimum": 10,
+      "maxLength": 45,
+      "pattern": "[0-9a-z_.]{5,45}(@)[0-9a-z_.]{3,15}[](/.)[a-z]{2,5}"
+    }
+  },
+  "required": [
+    "psd",
+    "email"
+  ]
+}
