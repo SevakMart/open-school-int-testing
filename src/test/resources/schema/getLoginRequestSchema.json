@@ -1,20 +1,42 @@
 {
   "type": "object",
   "properties": {
-    "psd": {
+    "name": {
       "type": "string",
-      "minimum": 8,
-      "pattern": "(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+])[A-Za-z\\d][A-Za-z\\d!@#$%^&*()_+]"
-    },
-    "email": {
-      "type": "string",
-      "minimum": 10,
+      "minLength": 2,
       "maxLength": 45,
-      "pattern": "[0-9a-z_.]{5,45}(@)[0-9a-z_.]{3,15}[](/.)[a-z]{2,5}"
+      "pattern": "[A-Za-z]"
+    },
+    "surname": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 45,
+      "pattern": "[A-Za-z]"
+
+    },
+    "professionName": {
+      "type": ["string","null"],
+      "minLength": 2,
+      "maxLength": 45,
+      "pattern": "[A-Za-z]"
+    },
+    "courseCount": {
+      "type": ["integer","null"]
+    },
+    "userImgPath": {
+      "type": ["string","null"]
+    },
+    "roleType": {
+      "type": "string"
+    },
+    "company":{
+      "type": ["string","null"]
     }
+
   },
   "required": [
-    "psd",
-    "email"
+    "name",
+    "surname"
+
   ]
 }
