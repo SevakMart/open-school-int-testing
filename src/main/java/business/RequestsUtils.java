@@ -5,22 +5,26 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-public class RequestsUtils {
-    private static ValidatableResponse response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class RequestsUtils {
+    private final static Logger logger = LoggerFactory.getLogger(RequestsUtils.class);
+    private static ValidatableResponse response;
     public static ValidatableResponse getResponse() {
         return response;
     }
-
     public static void get(String endpoint){
          response = RestAssured
                     .given()
                     .when()
                     .get(endpoint)
                     .then();
-    }
+         logger.info(response.extract().asPrettyString());
 
+    }
     public static void post(String endpoint, Object body){
+        logger.info("Before posting User");
         response = RestAssured
                     .given()
                     .spec(getRequestSpecification())
@@ -28,6 +32,7 @@ public class RequestsUtils {
                     .when()
                     .post(endpoint)
                     .then();
+        logger.info(response.extract().body().asPrettyString());
     }
     private static RequestSpecification getRequestSpecification(){
         RequestSpecBuilder spec = new RequestSpecBuilder();
