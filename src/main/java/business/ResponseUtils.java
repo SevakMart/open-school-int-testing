@@ -20,13 +20,14 @@ public class ResponseUtils {
                 .as(type);
     }
     public static int getIntFromResponse(String path) {
-        logger.info("IntFromResponse's path is {}",path);
+        logger.info(getResponse().extract().asPrettyString());
         return getResponse()
                 .extract()
                 .jsonPath()
                 .getInt(path);
     }
     public static String getStringFromResponse(String path) {
+        logger.info(getResponse().extract().asPrettyString());
         return getResponse()
                 .extract()
                 .jsonPath()
@@ -34,17 +35,20 @@ public class ResponseUtils {
     }
 
     public static String getAuthTokenFromResponseHeader() {
+        logger.info(getResponse().extract().header("Authorization"));
         return getResponse()
                 .extract()
                 .header("Authorization");
     }
 
     public static int getStatusCodeFromResponse() {
+        logger.info("StatusCode is {}",getResponse().extract().statusCode());
         return getResponse()
                 .extract()
                 .statusCode();
     }
     public static void validateResponseAgainstJSONSchema(String filepath){
+        logger.info(getResponse().extract().response().body().asPrettyString());
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
                 .setValidationConfiguration(ValidationConfiguration
@@ -52,7 +56,6 @@ public class ResponseUtils {
                         .setDefaultVersion(SchemaVersion.DRAFTV4)
                         .freeze())
                 .freeze();
-
         getResponse()
                 .assertThat()
                 .body(JsonSchemaValidator
