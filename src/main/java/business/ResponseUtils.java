@@ -5,7 +5,6 @@ import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
-import pojo.User;
 
 public class ResponseUtils {
     public static ValidatableResponse getResponse() {
@@ -43,7 +42,7 @@ public class ResponseUtils {
                 .extract()
                 .statusCode();
     }
-    public static void validateResponseAgainstJSONSchema(ValidatableResponse response, String filepath){
+    public static void validateResponseAgainstJSONSchema( String filepath){
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
                 .setValidationConfiguration(ValidationConfiguration
@@ -51,8 +50,7 @@ public class ResponseUtils {
                         .setDefaultVersion(SchemaVersion.DRAFTV4)
                         .freeze())
                 .freeze();
-
-        response
+        getResponse()
                 .assertThat()
                 .body(JsonSchemaValidator
                         .matchesJsonSchemaInClasspath(filepath)

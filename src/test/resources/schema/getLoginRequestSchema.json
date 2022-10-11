@@ -12,31 +12,40 @@
       "minLength": 2,
       "maxLength": 45,
       "pattern": "[A-Za-z]"
-
     },
     "professionName": {
-      "type": ["string","null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "minLength": 2,
       "maxLength": 45,
       "pattern": "[A-Za-z]"
     },
     "courseCount": {
-      "type": ["integer","null"]
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "userImgPath": {
-      "type": ["string","null"]
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "roleType": {
       "type": "string"
     },
-    "company":{
-      "type": ["string","null"]
+    "company": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
-
   },
   "required": [
     "name",
     "surname"
-
   ]
 }

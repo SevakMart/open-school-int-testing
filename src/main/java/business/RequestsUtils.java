@@ -20,6 +20,15 @@ public class RequestsUtils {
                     .then();
     }
 
+    public static void get(String endpoint, String header){
+        response = RestAssured
+                    .given()
+                    .header("Authorization", header)
+                    .when()
+                    .get(endpoint)
+                    .then();
+    }
+
     public static void post(String endpoint, Object body){
         response = RestAssured
                     .given()
