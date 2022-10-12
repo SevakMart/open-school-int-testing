@@ -5,8 +5,6 @@ import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ResponseUtils {
 
