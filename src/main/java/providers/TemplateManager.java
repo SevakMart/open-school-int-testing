@@ -11,8 +11,9 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 public class TemplateManager {
-    private Configuration config;
+
     private static final String TEMPLATE_DIRECTORY = "src/main/resources/";
+    private Configuration config;
 
     public TemplateManager() {
         config = new Configuration(Configuration.VERSION_2_3_31);

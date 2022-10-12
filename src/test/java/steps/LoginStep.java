@@ -11,6 +11,7 @@ import pojo.Student;
 import providers.LoginBodyProvider;
 
 public class LoginStep {
+
     @When("Login by valid {} password and {} email")
     public void loginByValidPasswordAndEmail(String password, String email) {
         String body = LoginBodyProvider.getLoginBody(password, email);

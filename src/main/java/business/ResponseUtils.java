@@ -7,11 +7,12 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
 
 public class ResponseUtils {
+
     public static ValidatableResponse getResponse() {
         return RequestsUtils.getResponse();
     }
 
-    public static <T> T getObjectFromResponse(Class <T> type) {
+    public static <T> T getObjectFromResponse(Class<T> type) {
         return getResponse()
                 .extract()
                 .as(type);
@@ -42,6 +43,7 @@ public class ResponseUtils {
                 .extract()
                 .statusCode();
     }
+
     public static void validateResponseAgainstJSONSchema( String filepath){
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
