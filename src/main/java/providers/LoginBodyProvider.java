@@ -1,6 +1,6 @@
 package providers;
 
-import business.ResponseUtils;
+import utils.ResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

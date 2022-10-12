@@ -1,8 +1,8 @@
 package steps;
 
-import business.RequestsUtils;
-import business.ResponseUtils;
-import business.SharedData;
+import utils.RequestsUtils;
+import utils.ResponseUtils;
+import utils.SharedTestData;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.http.HttpStatus;
@@ -23,7 +23,7 @@ public class LoginStep {
         int statusCode = ResponseUtils.getStatusCodeFromResponse();
         if (statusCode == HttpStatus.SC_OK) {
             ResponseUtils.validateResponseAgainstJSONSchema("schema/getLoginRequestSchema.json");
-            SharedData.setToken(ResponseUtils.getAuthTokenFromResponseHeader());
+            SharedTestData.setToken(ResponseUtils.getAuthTokenFromResponseHeader());
         } else {
             ResponseUtils.validateResponseAgainstJSONSchema("schema/getLoginErrorSchema.json");
         }

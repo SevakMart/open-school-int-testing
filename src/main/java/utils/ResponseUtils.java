@@ -1,4 +1,4 @@
-package business;
+package utils;
 
 import com.github.fge.jsonschema.SchemaVersion;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
