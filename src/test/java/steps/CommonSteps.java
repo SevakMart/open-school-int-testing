@@ -9,10 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CommonSteps {
-    private final Logger logger = LoggerFactory.getLogger(CommonSteps.class);
 
     private static final String BASE_URL = "http://open-school-dev.eu-central-1.elasticbeanstalk.com/";
     private static final String BASE_PATH = "api/v1/";
+    private final Logger logger = LoggerFactory.getLogger(CommonSteps.class);
 
     @Given("Setup Rest Assured")
     public void setupRestAssured() {
