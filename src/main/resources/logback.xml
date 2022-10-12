@@ -16,10 +16,6 @@
             </pattern>
         </encoder>
     </appender>
-    <logger name="MyLogger" level="info" >
-        <appender ref="MyConsoleAppender"/>
-        <appender ref="MyFileAppender"/>
-    </logger>
     <root level="info">
         <appender-ref ref="MyConsoleAppender"/>
         <appender-ref ref="FileAppender"/>

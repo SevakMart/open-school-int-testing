@@ -11,33 +11,24 @@ import org.slf4j.LoggerFactory;
 public class RequestsUtils {
     private final static Logger logger = LoggerFactory.getLogger(RequestsUtils.class);
     private static ValidatableResponse response;
+
     public static ValidatableResponse getResponse() {
         return response;
     }
-    public static void get(String endpoint){
-         response = RestAssured
-                    .given()
-                    .when()
-                    .get(endpoint)
-                    .then();
-         logger.info(response.extract().asPrettyString());
+
+    public static void get(String endpoint) {
+        response = RestAssured.given().when().get(endpoint).then();
+        logger.info(response.extract().asPrettyString());
 
     }
-    public static void post(String endpoint, Object body){
-        logger.info("Before posting User");
-        response = RestAssured
-                    .given()
-                    .spec(getRequestSpecification())
-                    .body(body)
-                    .when()
-                    .post(endpoint)
-                    .then();
+
+    public static void post(String endpoint, Object body) {
+        response = RestAssured.given().spec(getRequestSpecification()).body(body).when().post(endpoint).then();
         logger.info(response.extract().body().asPrettyString());
     }
-    private static RequestSpecification getRequestSpecification(){
+
+    private static RequestSpecification getRequestSpecification() {
         RequestSpecBuilder spec = new RequestSpecBuilder();
-        return spec.setContentType(ContentType.JSON)
-                .setAccept(ContentType.JSON)
-                .build();
+        return spec.setContentType(ContentType.JSON).setAccept(ContentType.JSON).build();
     }
 }

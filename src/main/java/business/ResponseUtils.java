@@ -9,25 +9,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ResponseUtils {
-    private final static Logger logger = LoggerFactory.getLogger(ResponseUtils.class);
+
     public static ValidatableResponse getResponse() {
         return RequestsUtils.getResponse();
     }
-    public static <T> T getObjectFromResponse(Class <T> type) {
-        logger.info(getResponse().extract().asPrettyString());
+
+    public static <T> T getObjectFromResponse(Class<T> type) {
         return getResponse()
                 .extract()
                 .as(type);
     }
+
     public static int getIntFromResponse(String path) {
-        logger.info(getResponse().extract().asPrettyString());
         return getResponse()
                 .extract()
                 .jsonPath()
                 .getInt(path);
     }
+
     public static String getStringFromResponse(String path) {
-        logger.info(getResponse().extract().asPrettyString());
         return getResponse()
                 .extract()
                 .jsonPath()
@@ -35,20 +35,18 @@ public class ResponseUtils {
     }
 
     public static String getAuthTokenFromResponseHeader() {
-        logger.info(getResponse().extract().header("Authorization"));
         return getResponse()
                 .extract()
                 .header("Authorization");
     }
 
     public static int getStatusCodeFromResponse() {
-        logger.info("StatusCode is {}",getResponse().extract().statusCode());
         return getResponse()
                 .extract()
                 .statusCode();
     }
-    public static void validateResponseAgainstJSONSchema(String filepath){
-        logger.info(getResponse().extract().response().body().asPrettyString());
+
+    public static void validateResponseAgainstJSONSchema(String filepath) {
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
                 .setValidationConfiguration(ValidationConfiguration
