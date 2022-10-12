@@ -26,6 +26,7 @@ public class RequestsUtils {
                 .then();
         logger.info(response.extract().asPrettyString());
     }
+
     public static void get(String endpoint, String header){
         response = RestAssured
                 .given()
