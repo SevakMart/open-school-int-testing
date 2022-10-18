@@ -10,7 +10,7 @@ import io.cucumber.java.en.When;
 
 public class MentorsStep {
 
-    Logger logger = LoggerFactory.getLogger(MentorsStep.class);
+    private Logger logger = LoggerFactory.getLogger(MentorsStep.class);
 
     @When("Get all mentors")
     public void getAllMentors() {
