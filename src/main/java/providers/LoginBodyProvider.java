@@ -13,7 +13,7 @@ public class LoginBodyProvider {
     public static String getLoginBody(String password, String email) {
         logger.info("The email is {} password is {}", email, password);
         TemplateManager templateManager = new TemplateManager();
-        Map<String, String> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
         params.put("psd", password);
         params.put("email", email);
         logger.info("The params are {}", params);

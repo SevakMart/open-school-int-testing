@@ -31,7 +31,7 @@ public class TemplateManager {
         }
     }
 
-    public String processTemplate(String templateName, Map<String, String> data) {
+    public String processTemplate(String templateName, Map<String, Object> data) {
         Template template = loadTemplate(templateName, TEMPLATE_DIRECTORY + templateName + ".ftl");
         try (StringWriter writer = new StringWriter()) {
             template.process(data, writer);
