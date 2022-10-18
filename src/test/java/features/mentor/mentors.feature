@@ -4,7 +4,7 @@ Feature: API test for Open School: mentor-controller
 
   Background:
     Given Setup Rest Assured
-    When Login by valid Test1234* password and anidarbinyan14@gmail.com email
+    When Login by valid "Test1234*" password and "anidarbinyan14@gmail.com" email
 
   Scenario Outline: Find all mentors
     When Get all mentors

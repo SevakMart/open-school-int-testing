@@ -1,37 +1,16 @@
-package steps;
+package steps.auth;
 
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.http.HttpStatus;
-
 import pojo.Student;
-import providers.LoginBodyProvider;
+import providers.StudentProvider;
+import utils.RequestsUtils;
+import utils.ResponseUtils;
 
-public class LoginStep {
-
-    @When("Login by valid {} password and {} email")
-    public void loginByValidPasswordAndEmail(String password, String email) {
-        String body = LoginBodyProvider.getLoginBody(password, email);
-        RequestsUtils.post("auth/login", body);
-    }
-
-    @Then("Validate response values")
-    public void validateResponseValues() {
-        int statusCode = ResponseUtils.getStatusCodeFromResponse();
-        if (statusCode == HttpStatus.SC_OK) {
-            ResponseUtils.validateResponseAgainstJSONSchema("schema/getLoginRequestSchema.json");
-            SharedTestData.setToken(ResponseUtils.getAuthTokenFromResponseHeader());
-        } else {
-            ResponseUtils.validateResponseAgainstJSONSchema("schema/getLoginErrorSchema.json");
-        }
-    }
-
+public class RegisterStep {
     @When("Register random student")
     public void registerRandomStudent() {
-        Student student = Student.getRandomStudent();
+        Student student = StudentProvider.getRandomStudent();
         RequestsUtils.post("auth/register", student);
     }
 

@@ -8,6 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class RequestsUtils {
 
     private final static Logger logger = LoggerFactory.getLogger(RequestsUtils.class);

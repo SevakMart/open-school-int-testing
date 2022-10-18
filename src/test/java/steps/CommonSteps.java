@@ -35,4 +35,5 @@ public class CommonSteps {
         int actualStatusCode = ResponseUtils.getStatusCodeFromResponse();
         Assertions.assertThat(actualStatusCode).isEqualTo(HttpStatus.SC_CREATED);
     }
+
 }
