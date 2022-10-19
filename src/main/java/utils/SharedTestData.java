@@ -9,11 +9,21 @@ public final class SharedTestData {
 
     private static String token;
 
+    private static String resetPasswordToken;
+
     public static String getToken() {
         return token;
     }
 
     public static void setToken(String token) {
         SharedTestData.token = token;
+    }
+
+    public static String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public static void setResetPasswordToken(String resetPasswordToken) {
+        SharedTestData.resetPasswordToken = resetPasswordToken;
     }
 }

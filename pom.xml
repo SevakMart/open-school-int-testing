@@ -106,6 +106,12 @@
             <artifactId>logback-classic</artifactId>
             <version>1.4.3</version>
         </dependency>
+        <!-- mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

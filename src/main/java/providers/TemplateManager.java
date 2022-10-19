@@ -13,7 +13,7 @@ import java.util.Map;
 public class TemplateManager {
 
     private static final String TEMPLATE_DIRECTORY = "src/main/resources/";
-    private Configuration config;
+    private final Configuration config;
 
     public TemplateManager() {
         config = new Configuration(Configuration.VERSION_2_3_31);
