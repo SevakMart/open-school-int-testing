@@ -13,7 +13,7 @@ import java.util.Map;
 public class TemplateManager {
 
     private static final String TEMPLATE_DIRECTORY = "src/main/resources/";
-    private Configuration config;
+    private final Configuration config;
 
     public TemplateManager() {
         config = new Configuration(Configuration.VERSION_2_3_31);
@@ -31,7 +31,7 @@ public class TemplateManager {
         }
     }
 
-    public String processTemplate(String templateName, Map<String, String> data) {
+    public String processTemplate(String templateName, Map<String, Object> data) {
         Template template = loadTemplate(templateName, TEMPLATE_DIRECTORY + templateName + ".ftl");
         try (StringWriter writer = new StringWriter()) {
             template.process(data, writer);

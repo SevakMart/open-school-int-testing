@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "timeStamp": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

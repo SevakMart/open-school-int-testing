@@ -10,7 +10,11 @@ public final class SharedTestData {
     private final static Logger logger = LoggerFactory.getLogger(SharedTestData.class);
 
     private static String token;
-    
+
+    private static String resetPasswordToken;
+
+    private static int userId;
+
     private static ArrayList<Integer> listcategoriesId;
     private static int categoryId;
 
@@ -41,5 +45,19 @@ public final class SharedTestData {
         SharedTestData.token = token;
     }
 
-  
+    public static String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public static void setResetPasswordToken(String resetPasswordToken) {
+        SharedTestData.resetPasswordToken = resetPasswordToken;
+    }
+
+    public static int getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(int userId) {
+        SharedTestData.userId = userId;
+    }
 }

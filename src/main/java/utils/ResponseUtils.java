@@ -46,7 +46,7 @@ public class ResponseUtils {
                 .statusCode();
     }
 
-    public static void validateResponseAgainstJSONSchema(String filepath) {
+    public static void validateResponseAgainstJSONSchema( String filepath){
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
                 .setValidationConfiguration(ValidationConfiguration
