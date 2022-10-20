@@ -1,9 +1,10 @@
 package steps;
 
-import business.ResponseUtils;
+import utils.ResponseUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
+import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +30,10 @@ public class CommonSteps {
         Assertions.assertThat(actualStatusCode).isEqualTo(expectedStatusCode);
     }
 
-    @Then("Validate response JsonSchema {string}")
-    public void validateResponseJsonSchema(String schemaPath) {
-        ResponseUtils.validateResponseAgainstJSONSchema(schemaPath);
+    @Then("Validate entity creation status")
+    public void validateEntityCreationStatus() {
+        int actualStatusCode = ResponseUtils.getStatusCodeFromResponse();
+        Assertions.assertThat(actualStatusCode).isEqualTo(HttpStatus.SC_CREATED);
     }
+
 }

@@ -3,24 +3,16 @@
   "properties": {
     "name": {
       "type": "string",
-      "minLength": 2,
-      "maxLength": 45,
-      "pattern": "[A-Za-z]"
+      "maxLength": 45
     },
     "surname": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 45,
-      "pattern": "[A-Za-z]"
+      "type": "string"
     },
     "professionName": {
       "type": [
         "string",
         "null"
-      ],
-      "minLength": 2,
-      "maxLength": 45,
-      "pattern": "[A-Za-z]"
+      ]
     },
     "courseCount": {
       "type": [

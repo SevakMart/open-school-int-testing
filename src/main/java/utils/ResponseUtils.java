@@ -1,4 +1,4 @@
-package business;
+package utils;
 
 import com.github.fge.jsonschema.SchemaVersion;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
@@ -44,7 +44,7 @@ public class ResponseUtils {
                 .statusCode();
     }
 
-    public static void validateResponseAgainstJSONSchema(String filepath) {
+    public static void validateResponseAgainstJSONSchema( String filepath){
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
                 .setValidationConfiguration(ValidationConfiguration

@@ -1,4 +1,4 @@
-package business;
+package utils;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -7,6 +7,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 public class RequestsUtils {
 
@@ -25,6 +26,15 @@ public class RequestsUtils {
                 .get(endpoint)
                 .then();
         logger.info(response.extract().asPrettyString());
+    }
+
+    public static void get(String endpoint, String header){
+        response = RestAssured
+                .given()
+                .header("Authorization", header)
+                .when()
+                .get(endpoint)
+                .then();
     }
 
     public static void post(String endpoint, Object body) {
