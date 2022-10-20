@@ -1,6 +1,6 @@
 package steps;
 
-import business.ResponseUtils;
+import utils.ResponseUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
@@ -22,6 +22,7 @@ public class CommonSteps {
         RestAssured.basePath = BASE_PATH;
     }
 
+
     @Then("Status code should be {int}")
     public void statusCodeShouldBe(int expectedStatusCode) {
         int actualStatusCode = ResponseUtils.getStatusCodeFromResponse();
@@ -33,4 +34,6 @@ public class CommonSteps {
     public void validateResponseJsonSchema(String schemaPath) {
         ResponseUtils.validateResponseAgainstJSONSchema(schemaPath);
     }
+
+
 }

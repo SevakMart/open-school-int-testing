@@ -1,6 +1,6 @@
 package providers;
 
-import business.ResponseUtils;
+import utils.ResponseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 public class LoginBodyProvider {
     private final static Logger logger = LoggerFactory.getLogger(ResponseUtils.class);
 
-    public static String getLoginBody(String password, String email) {
+    public static String getLoginBody(String password, String email)  {
         logger.info("The email is {} password is {}", email, password);
         TemplateManager templateManager = new TemplateManager();
         Map<String, String> params = new HashMap<>();

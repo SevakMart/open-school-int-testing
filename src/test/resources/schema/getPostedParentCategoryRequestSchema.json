@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "logoPath": {
+      "type":
+      "string"
+    }
+  },
+  "required": [
+    "title",
+    "logoPath"
+  ]
+}

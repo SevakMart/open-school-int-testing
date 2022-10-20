@@ -1,0 +1,532 @@
+{
+  "type": "object",
+  "properties": {
+    "parentAndSubCategoriesMap": {
+      "type": "object",
+      "properties": {
+        "CategoryDto{id=19, title='Advanced-Engineering', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        },
+        "CategoryDto{id=17, title='Software-Development', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        },
+        "CategoryDto{id=22, title='Management', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        },
+        "CategoryDto{id=21, title='Design', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        },
+        "CategoryDto{id=18, title='Software-Testing', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        },
+        "CategoryDto{id=20, title='IT-Services', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        },
+        "CategoryDto{id=23, title='Language-Training', logoPath='null'}": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "CategoryDto{id=19, title='Advanced-Engineering', logoPath='null'}",
+        "CategoryDto{id=17, title='Software-Development', logoPath='null'}",
+        "CategoryDto{id=22, title='Management', logoPath='null'}",
+        "CategoryDto{id=21, title='Design', logoPath='null'}",
+        "CategoryDto{id=18, title='Software-Testing', logoPath='null'}",
+        "CategoryDto{id=20, title='IT-Services', logoPath='null'}",
+        "CategoryDto{id=23, title='Language-Training', logoPath='null'}"
+      ]
+    }
+  },
+  "required": [
+    "parentAndSubCategoriesMap"
+  ]
+}

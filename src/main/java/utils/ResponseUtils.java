@@ -1,10 +1,12 @@
-package business;
+package utils;
 
 import com.github.fge.jsonschema.SchemaVersion;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
+
+import java.util.List;
 
 public class ResponseUtils {
 
