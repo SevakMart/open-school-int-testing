@@ -38,6 +38,7 @@ public class RequestsUtils {
     }
 
     public static void post(String endpoint, Object body) {
+        logger.info(endpoint, body);
         response = RestAssured
                 .given()
                 .spec(getRequestSpecification())
