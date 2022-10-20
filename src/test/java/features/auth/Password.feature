@@ -15,3 +15,8 @@ Feature: API test for Open School password reset and forget functionality
     Given Request of password forget with "anidarbinyan@gmail.com" email
     Then Status code should be 400
     And Verify forgot password error message
+
+  Scenario: User can reset password
+    Given Get reset password token by "anidarbinyan14@gmail.com" email
+    Then Make request with token, new password and confirmed password "Test1234*"
+    And Verify reset password success message
