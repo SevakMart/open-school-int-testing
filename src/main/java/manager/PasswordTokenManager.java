@@ -9,9 +9,9 @@ import java.sql.Statement;
 
 public class PasswordTokenManager {
 
-    private Connection connection = DBConnectionProvider.getInstance().getConnection();
+    private final Connection connection = DBConnectionProvider.getInstance().getConnection();
 
-    public String getPasswordToken(String email){
+    public String getPasswordToken(String email) throws SQLException {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT token FROM `reset_password_token` " +
@@ -21,6 +21,8 @@ public class PasswordTokenManager {
             return resultSet.getString("token");
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            connection.close();
         }
     }
 }

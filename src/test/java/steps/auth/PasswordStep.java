@@ -11,6 +11,8 @@ import utils.RequestsUtils;
 import utils.ResponseUtils;
 import utils.SharedTestData;
 
+import java.sql.SQLException;
+
 public class PasswordStep {
     @Given("Request of password forget with {string} email")
     public void requestOfPasswordForgetWithEmail(String email) {
@@ -31,7 +33,7 @@ public class PasswordStep {
     }
 
     @Given("Get reset password token by {string} email")
-    public void getResetPasswordTokenByEmail(String email) {
+    public void getResetPasswordTokenByEmail(String email) throws SQLException {
         PasswordTokenManager manager = new PasswordTokenManager();
         String resetPassToken = manager.getPasswordToken(email);
         SharedTestData.setResetPasswordToken(resetPassToken);
