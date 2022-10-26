@@ -5,39 +5,32 @@ Feature: API test for Open School: category-controller
   Background:
     Given Setup Rest Assured
 
-  Scenario Outline: Find all categories and relevant subcategories by students
+  Scenario Outline: Find all categories and relevant subcategories by all users
     When Login by valid "<password>" password and "<email>" email
-    When Get all categories and relevant subcategories
-    Then Status code should be <statusCode>
-    Then Validate response JsonSchema "<schemaPath>"
-#    Then Validate categories' response "<title>" values
+    Then Get all categories and relevant subcategories
+    Then Status code should be 200
     Examples:
-      | password  | email                      | statusCode | schemaPath                                |
-      | Test123@# | openschooltest78@gmail.com | 200        | schema/getAllCategoriesRequestSchema.json |
+      | password  | email                      |
+      | Test123@# | openschooltest78@gmail.com |
+      | Test1111! | anidarbinyan14@yahoo.com   |
 
-  Scenario Outline: Find all categories and relevant subcategories by admins
-    When Login by valid "<password>" password and "<email>" email
-    When Get all categories and relevant subcategories
-    Then Status code should be <statusCode>
-#    Then Validate response JsonSchema "<schemaPath>"
-    Examples:
-      | password  | email                    | statusCode | schemaPath                                |
-      | Test1111! | anidarbinyan14@yahoo.com | 200        | schema/getAllCategoriesRequestSchema.json |
-
-
-  Scenario Outline: Find all categories and relevant subcategories without login
+  Scenario: Find all categories and relevant subcategories without login
     When Get all categories and relevant subcategories without login
-    Then Status code should be <statusCode>
-    Examples:
-      | statusCode |
-      | 401        |
+    Then Status code should be 401
 
   Scenario Outline: Find all categories by title mapped by subcategories
     When Login by valid "<password>" password and "<email>" email
-    When Get subCategory by "<title>"
-    Then Status code should be <statusCode>
-#    Then Validate categories' response "<title>" values
+    Then Get any category title from DB
+    Then Get category by title
+    Then Status code should be 200
     Examples:
-      | password  | email                      | title    | statusCode | schemaPath                                    |
-      | Test123@# | openschooltest78@gmail.com | Speaking | 200        | schema/getPostedSubCategoryRequestSchema.json |
+      | password  | email                      |
+      | Test123@# | openschooltest78@gmail.com |
 
+  Scenario Outline: Find all parent categories
+    When Login by valid "<password>" password and "<email>" email
+    Then Get all parent categories
+    Then Status code should be 200
+    Examples:
+      | password  | email                      |
+      | Test123@# | openschooltest78@gmail.com |

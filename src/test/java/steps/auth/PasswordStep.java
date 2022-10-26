@@ -32,7 +32,7 @@ public class PasswordStep {
         Assertions.assertThat(msg).contains("email does not exist");
     }
 
-    @Given("Get reset password token by {string} email")
+    @Then("Get reset password token by {string} email")
     public void getResetPasswordTokenByEmail(String email) throws SQLException {
         PasswordTokenManager manager = new PasswordTokenManager();
         String resetPassToken = manager.getPasswordToken(email);

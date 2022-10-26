@@ -7,11 +7,10 @@ Feature: API test for Open School: category-controller
 
   Scenario Outline: Find category or subcategory by id
     When Login by valid "<password>" password and "<email>" email
-    Then Get all categories by id
-#    Then Find category or subcategory by id
-#    Then Status code should be <statusCode>
-#    Then Validate categoryid success response values
-#    Then Validate categories' response <id> values
+    Then Get category from DB
+    Then Find category or subcategory by id
+    Then Status code should be 200
+    Then Validate categoryid success response values
     Examples:
-      | password  | email                      | statusCode |
-      | Test123@# | openschooltest78@gmail.com | 200        |
+      | password  | email                    |
+      | Test1111! | anidarbinyan14@yahoo.com |

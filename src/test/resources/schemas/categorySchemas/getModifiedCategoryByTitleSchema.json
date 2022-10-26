@@ -8,12 +8,14 @@
       "type": "string"
     },
     "logoPath": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [
     "id",
-    "title",
-    "logoPath"
+    "title"
   ]
 }

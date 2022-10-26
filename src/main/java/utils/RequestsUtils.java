@@ -49,7 +49,18 @@ public class RequestsUtils {
         logger.info(response.extract().body().asPrettyString());
     }
 
+    public static void deleteById(String endpoint, String token, int id){
+        response = RestAssured
+                .given()
+                .header("Authorization", token)
+                .pathParam("id", id)
+                .when()
+                .delete(endpoint)
+                .then();
+    }
+
     public static void post(String endpoint, Object body) {
+        logger.info(endpoint, body);
         response = RestAssured
                 .given()
                 .spec(getRequestSpecification())
@@ -79,9 +90,9 @@ public class RequestsUtils {
                 .given()
                 .header("Authorization", token)
                 .contentType("multipart/form-data")
-                .multiPart("id", id, "multipart/form-data")
-                .multiPart("title", title, "multipart/form-data")
+                .multiPart("parentCategoryId", id, "multipart/form-data")
                 .multiPart("image", new File(filePath), "multipart/form-data")
+                .multiPart("title", title, "multipart/form-data")
                 .log()
                 .all()
                 .post(endpoint)
@@ -113,6 +124,7 @@ public class RequestsUtils {
         logger.info(response.extract().body().asPrettyString());
     }
 
+
     private static RequestSpecification getRequestSpecification() {
         RequestSpecBuilder spec = new RequestSpecBuilder();
         return spec
@@ -121,6 +133,7 @@ public class RequestsUtils {
                 .build();
     }
 
+
     private static RequestSpecification getRequestSpecificationMultiPart() {
         RequestSpecBuilder spec = new RequestSpecBuilder();
         return spec
@@ -128,4 +141,34 @@ public class RequestsUtils {
                 .setAccept(ContentType.MULTIPART)
                 .build();
     }
+    public static void patchCategoryByTitle(String endpoint, Object body, String token, int categoryId) {
+        logger.info(endpoint, body, token);
+        response = RestAssured
+                .given()
+                .header("Authorization", token)
+                .and()
+                .pathParam("id", categoryId)
+                .spec(getRequestSpecification())
+                .body(body)
+                .when()
+                .patch(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
+    public static void patchCategoryByImage(String endpoint, String imageFilePath, String token, int categoryId) {
+        logger.info(endpoint, imageFilePath, token);
+        response = RestAssured
+                .given()
+                .header("Authorization", token)
+                .and()
+                .pathParam("id", categoryId)
+                .contentType("multipart/form-data")
+                .multiPart("image", new File(imageFilePath), "multipart/form-data")
+                .log()
+                .all()
+                .patch(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
 }
+

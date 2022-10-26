@@ -15,26 +15,24 @@ public final class SharedTestData {
 
     private static int userId;
 
-    private static ArrayList<Integer> listcategoriesId;
     private static int categoryId;
+
+    private static String categoryTitle;
+
+    public static String getCategoryTitle() {
+        return categoryTitle;
+    }
+
+    public static void setCategoryTitle(String categoryTitle) {
+        SharedTestData.categoryTitle = categoryTitle;
+    }
 
     public static void setCategoryId(int categoryId) {
         SharedTestData.categoryId = categoryId;
     }
 
     public static int getCategoryId() {
-        for (Integer i:listcategoriesId) {
-            categoryId = listcategoriesId.indexOf(i);
-        }
         return categoryId;
-    }
-
-    public static ArrayList<Integer> getListcategoriesId() {
-        return listcategoriesId;
-    }
-
-    public static void setListcategoriesId(ArrayList<Integer> listcategoriesId) {
-        SharedTestData.listcategoriesId = listcategoriesId;
     }
 
     public static String getToken() {

@@ -14,8 +14,8 @@ Feature: API test for Open School register functionality
 
   Scenario Outline: Student with invalid credentials is not able to register
     When Check registration fail if data is not correct "<firstname>" firstname, "<lastname>" lastname, "<email>" email, "<password>" password
-    Then Status code should be <statusCode>
+    Then Status code should be 400
 
     Examples:
-      | firstname    | lastname   | email              |  password  | statusCode|
-      | Test         |   t        | testmail           |     hjk1   |  400      |
+      | firstname    | lastname   | email              |  password  |
+      | Test         |   t        | testmail           |     hjk1   |

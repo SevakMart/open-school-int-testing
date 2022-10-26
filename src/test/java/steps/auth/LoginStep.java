@@ -7,7 +7,6 @@ import utils.SharedTestData;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import pojo.Student;
 import providers.LoginBodyProvider;
 
 public class LoginStep {
@@ -21,7 +20,7 @@ public class LoginStep {
 
     @Then("Validate login success response values")
     public void validateLoginSuccessResponseValues() {
-        ResponseUtils.validateResponseAgainstJSONSchema("schema/getLoginRequestSchema.json");
+        ResponseUtils.validateResponseAgainstJSONSchema("schemas/authSchemas/getLoginRequestSchema.json");
     }
 
     @When("Login by invalid {string} password and {string} email")
@@ -32,7 +31,7 @@ public class LoginStep {
 
     @Then("Validate login error response values")
     public void validateLoginErrorResponseValues() {
-        ResponseUtils.validateResponseAgainstJSONSchema("schema/getLoginErrorSchema.json");
+        ResponseUtils.validateResponseAgainstJSONSchema("schemas/authSchemas/getLoginErrorSchema.json");
     }
 
     @Then("Verify login error message")

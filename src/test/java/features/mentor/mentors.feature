@@ -6,10 +6,6 @@ Feature: API test for Open School: mentor-controller
     Given Setup Rest Assured
     When Login by valid "Test1234*" password and "anidarbinyan14@gmail.com" email
 
-  Scenario Outline: Find all mentors
+  Scenario: Find all mentors
     When Get all mentors
-    Then Status code should be <statusCode>
-    #    Then Validate mentors' response values
-    Examples:
-      | statusCode   |
-      | 200          |
+    Then Status code should be 200

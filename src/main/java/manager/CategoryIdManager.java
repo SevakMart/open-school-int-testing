@@ -6,24 +6,34 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryIdManager {
 
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
-    public ArrayList<Integer> getAllCategoriesId() throws SQLException {
-
+    public int getCategoryId() throws SQLException {
         try {
-            ArrayList<Integer> listId = new ArrayList<>();
+            int categoryId;
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id FROM category;");
-            while (resultSet.next()) {
-                //System.out.println(resultSet.getInt("id"));
-                listId.add(resultSet.getInt("id"));
-            }
-            return listId;
+            ResultSet resultSet = statement.executeQuery("SELECT id FROM category LIMIT 1;");
+            resultSet.next();
+            categoryId = resultSet.getInt("id");
+            return categoryId;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            connection.close();
+        }
+    }
+
+    public int getSubCategoryId() throws SQLException {
+        try {
+            int categoryId;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT id FROM category Where parent_category_id>=1  LIMIT 1;");
+            resultSet.next();
+            categoryId = resultSet.getInt("id");
+            return categoryId;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

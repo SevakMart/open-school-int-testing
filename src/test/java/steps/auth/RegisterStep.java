@@ -16,7 +16,7 @@ public class RegisterStep {
 
     @Then("Validate student registration response")
     public void validateStudentRegistrationResponse() {
-        ResponseUtils.validateResponseAgainstJSONSchema("schema/getStudentRegistrationResponseSchema.json");
+        ResponseUtils.validateResponseAgainstJSONSchema("schemas/authSchemas/getStudentRegistrationResponseSchema.json");
     }
 
     @When("Check registration fail if provided {} firstname, {} lastname, {} email, {} password is not correct")

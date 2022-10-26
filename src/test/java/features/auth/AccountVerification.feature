@@ -20,6 +20,3 @@ Feature: API test for Open School account verification functionality
       |-1  |
       |1v  |
       |#*  |
-
-
-
