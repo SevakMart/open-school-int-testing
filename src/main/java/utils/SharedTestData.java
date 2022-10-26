@@ -3,8 +3,6 @@ package utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-
 public final class SharedTestData {
 
     private final static Logger logger = LoggerFactory.getLogger(SharedTestData.class);

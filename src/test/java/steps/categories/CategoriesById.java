@@ -2,7 +2,6 @@ package steps.categories;
 
 import io.cucumber.java.en.Then;
 import manager.CategoryIdManager;
-import org.assertj.core.api.Assertions;
 import utils.RequestsUtils;
 import utils.ResponseUtils;
 import utils.SharedTestData;
