@@ -12,11 +12,6 @@ public class ResponseUtils {
         return RequestsUtils.getResponse();
     }
 
-    public static <T> T getObjectFromResponse(Class<T> type) {
-        return getResponse()
-                .extract()
-                .as(type);
-    }
 
     public static int getIntFromResponse(String path) {
         return getResponse()
@@ -44,7 +39,14 @@ public class ResponseUtils {
                 .statusCode();
     }
 
-    public static void validateResponseAgainstJSONSchema( String filepath){
+    public static <T> T getObjectFromResponse(String path, Class<T> type) {
+        return getResponse()
+                .extract()
+                .jsonPath()
+                .getObject(path, type);
+    }
+
+    public static void validateResponseAgainstJSONSchema(String filepath) {
         JsonSchemaFactory jsonSchemaFactory = JsonSchemaFactory
                 .newBuilder()
                 .setValidationConfiguration(ValidationConfiguration

@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 
 public final class SharedTestData {
 
-    private final static Logger logger = LoggerFactory.getLogger(SharedTestData.class);
-
     private static String token;
 
     private static String resetPasswordToken;
@@ -14,6 +12,16 @@ public final class SharedTestData {
     private static int userId;
 
     private static int categoryId;
+
+    private static int subCategoryId;
+
+    public static int getSubCategoryId() {
+        return subCategoryId;
+    }
+
+    public static void setSubCategoryId(int subCategoryId) {
+        SharedTestData.subCategoryId = subCategoryId;
+    }
 
     private static String categoryTitle;
 

@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.Map;
+
 
 public class RequestsUtils {
 
@@ -26,7 +28,7 @@ public class RequestsUtils {
                 .when()
                 .get(endpoint)
                 .then();
-        logger.info(response.extract().asPrettyString());
+        logger.info(response.extract().body().asPrettyString());
     }
 
     public static void get(String endpoint, String token) {
@@ -38,22 +40,11 @@ public class RequestsUtils {
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }
-    public static void getById(String endpoint, String token,int id) {
-        response = RestAssured
-                .given()
-                .header("Authorization", token)
-                .pathParam("id", id)
-                .when()
-                .get(endpoint)
-                .then();
-        logger.info(response.extract().body().asPrettyString());
-    }
 
-    public static void deleteById(String endpoint, String token, int id){
+    public static void delete(String endpoint) {
         response = RestAssured
                 .given()
-                .header("Authorization", token)
-                .pathParam("id", id)
+                .header("Authorization", SharedTestData.getToken())
                 .when()
                 .delete(endpoint)
                 .then();
@@ -71,82 +62,45 @@ public class RequestsUtils {
         logger.info(response.extract().body().asPrettyString());
     }
 
-    public static void multipartPost(String endpoint, String token, String filePath, String title) {
+    public static void multipartPost(String endpoint, Map<String, Object> body, String filePath) {
         response = RestAssured
                 .given()
-                .header("Authorization", token)
-                .contentType("multipart/form-data")
+                .header("Authorization", SharedTestData.getToken())
                 .multiPart("image", new File(filePath), "multipart/form-data")
-                .multiPart("title", title, "multipart/form-data")
-                .log()
-                .all()
+                .formParams(body)
                 .post(endpoint)
                 .then();
+
         logger.info(response.extract().body().asPrettyString());
     }
 
-    public static void multipartPost(String endpoint, String token, String id, String title, String filePath) {
+    public static void multipartPost(String endpoint, String key, String value) {
         response = RestAssured
                 .given()
-                .header("Authorization", token)
+                .header("Authorization", SharedTestData.getToken())
                 .contentType("multipart/form-data")
-                .multiPart("parentCategoryId", id, "multipart/form-data")
-                .multiPart("image", new File(filePath), "multipart/form-data")
-                .multiPart("title", title, "multipart/form-data")
-                .log()
-                .all()
+                .multiPart(key, value, "multipart/form-data")
                 .post(endpoint)
                 .then();
+
         logger.info(response.extract().body().asPrettyString());
     }
 
-    public static void multipartPostWithoutImage(String endpoint, String token, String title) {
+    public static void getByQueryParams(String endpoint, Map<String, Object> queryParam) {
         response = RestAssured
                 .given()
-                .header("Authorization", token)
-                .contentType("multipart/form-data")
-                .multiPart("title", title, "multipart/form-data")
-                .log()
-                .all()
-                .post(endpoint)
-                .then();
-        logger.info(response.extract().body().asPrettyString());
-    }
-    public static void getCategoryBySubCategoryTitle(String endpoint, String token, String title) {
-        response = RestAssured
-                .given()
-                .header("Authorization", token)
-                .queryParam("title", title)
-                .log()
-                .all()
+                .header("Authorization", SharedTestData.getToken())
+                .queryParams(queryParam)
                 .get(endpoint)
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }
 
-
-    private static RequestSpecification getRequestSpecification() {
-        RequestSpecBuilder spec = new RequestSpecBuilder();
-        return spec
-                .setContentType(ContentType.JSON)
-                .setAccept(ContentType.JSON)
-                .build();
-    }
-
-
-    private static RequestSpecification getRequestSpecificationMultiPart() {
-        RequestSpecBuilder spec = new RequestSpecBuilder();
-        return spec
-                .setContentType(ContentType.MULTIPART)
-                .setAccept(ContentType.MULTIPART)
-                .build();
-    }
-    public static void patchCategoryByTitle(String endpoint, Object body, String token, int categoryId) {
-        logger.info(endpoint, body, token);
+    public static void patchCategoryByTitle(String endpoint, Object body, int categoryId) {
+        logger.info(endpoint, body, SharedTestData.getToken());
         response = RestAssured
                 .given()
-                .header("Authorization", token)
-                .and()
+                .header("Authorization", SharedTestData.getToken())
                 .pathParam("id", categoryId)
                 .spec(getRequestSpecification())
                 .body(body)
@@ -155,20 +109,25 @@ public class RequestsUtils {
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }
-    public static void patchCategoryByImage(String endpoint, String imageFilePath, String token, int categoryId) {
-        logger.info(endpoint, imageFilePath, token);
+
+    public static void patchCategoryByImage(String endpoint, String imageFilePath, int categoryId) {
+        logger.info(endpoint, imageFilePath, SharedTestData.getToken());
         response = RestAssured
                 .given()
-                .header("Authorization", token)
-                .and()
+                .header("Authorization", SharedTestData.getToken())
                 .pathParam("id", categoryId)
                 .contentType("multipart/form-data")
                 .multiPart("image", new File(imageFilePath), "multipart/form-data")
-                .log()
-                .all()
                 .patch(endpoint)
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }
-}
 
+    private static RequestSpecification getRequestSpecification() {
+        RequestSpecBuilder spec = new RequestSpecBuilder();
+        return spec
+                .setContentType(ContentType.JSON)
+                .setAccept(ContentType.JSON)
+                .build();
+    }
+}

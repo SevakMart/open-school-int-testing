@@ -1,22 +1,23 @@
 package steps.auth;
 
+import config.TestDataProvider;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import manager.PasswordTokenManager;
+import manager.AuthManager;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.Assertions;
-import providers.EmailBodyProvider;
-import providers.ResetBodyProvider;
+import providers.bodyProviders.EmailBodyProvider;
+import providers.bodyProviders.ResetBodyProvider;
 import utils.RequestsUtils;
 import utils.ResponseUtils;
 import utils.SharedTestData;
 
-import java.sql.SQLException;
 
 public class PasswordStep {
-    @Given("Request of password forget with {string} email")
-    public void requestOfPasswordForgetWithEmail(String email) {
-        String body = EmailBodyProvider.getEmailBody(email);
+    @Given("Request of password forget with provided email")
+    public void requestOfPasswordForgetWithProvidedEmail() {
+        String body = EmailBodyProvider.getEmailBody(TestDataProvider.getPropertyValue("userEmail"));
         RequestsUtils.post("auth/password/forgot", body);
     }
 
@@ -32,16 +33,16 @@ public class PasswordStep {
         Assertions.assertThat(msg).contains("email does not exist");
     }
 
-    @Then("Get reset password token by {string} email")
-    public void getResetPasswordTokenByEmail(String email) throws SQLException {
-        PasswordTokenManager manager = new PasswordTokenManager();
-        String resetPassToken = manager.getPasswordToken(email);
+    @Then("Get reset password token by provided email")
+    public void getResetPasswordTokenByProvidedEmail() {
+        AuthManager manager = new AuthManager();
+        String resetPassToken = manager.getPasswordToken(TestDataProvider.getPropertyValue("userEmail"));
         SharedTestData.setResetPasswordToken(resetPassToken);
     }
 
-    @Then("Make request with token, new password and confirmed password {string}")
-    public void makeRequestWithTokenNewPasswordAndConfirmedPassword(String password) {
-        String body = ResetBodyProvider.getResetBody(SharedTestData.getResetPasswordToken(), password);
+    @Then("Make request with token, new password and confirmed password")
+    public void makeRequestWithTokenNewPasswordAndConfirmedPassword() {
+        String body = ResetBodyProvider.getResetBody(SharedTestData.getResetPasswordToken(), TestDataProvider.getPropertyValue("userPsd"));
         RequestsUtils.post("auth/password/reset", body);
     }
 
@@ -49,5 +50,11 @@ public class PasswordStep {
     public void verifyResetPasswordSuccessMessage() {
         String msg = ResponseUtils.getStringFromResponse("message");
         Assertions.assertThat(msg).contains("Your password has been successfully changed");
+    }
+
+    @Given("Request of password forget with provided invalid email")
+    public void requestOfPasswordForgetWithProvidedInvalidEmail() {
+        String body = EmailBodyProvider.getEmailBody(RandomStringUtils.randomAlphabetic(5) + "@gmail.com");
+        RequestsUtils.post("auth/password/forgot", body);
     }
 }

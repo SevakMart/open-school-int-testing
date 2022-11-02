@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import pojo.Student;
-import providers.StudentProvider;
+import providers.dataProviders.StudentProvider;
 import utils.RequestsUtils;
 import utils.ResponseUtils;
 import utils.SharedTestData;
@@ -16,6 +16,7 @@ public class AccountVerificationStep {
     public void prepareUserForAccountVerification() {
         Student student = StudentProvider.getRandomStudent();
         RequestsUtils.post("auth/register", student);
+        System.out.println(ResponseUtils.getResponse().extract().asPrettyString());
         SharedTestData.setUserId(ResponseUtils.getIntFromResponse("userId"));
     }
 

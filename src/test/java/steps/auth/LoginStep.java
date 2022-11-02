@@ -1,5 +1,6 @@
 package steps.auth;
 
+import config.TestDataProvider;
 import org.assertj.core.api.Assertions;
 import utils.RequestsUtils;
 import utils.ResponseUtils;
@@ -7,13 +8,13 @@ import utils.SharedTestData;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import providers.LoginBodyProvider;
+import providers.bodyProviders.LoginBodyProvider;
 
 public class LoginStep {
 
-    @When("Login by valid {string} password and {string} email")
-    public void loginByValidPasswordAndEmail(String password, String email) {
-        String body = LoginBodyProvider.getLoginBody(password, email);
+    @When("Login by valid {string} email and {string} password")
+    public void loginByValidEmailAndPassword(String email, String password) {
+        String body = LoginBodyProvider.getLoginBody(TestDataProvider.getPropertyValue(password), TestDataProvider.getPropertyValue(email));
         RequestsUtils.post("auth/login", body);
         SharedTestData.setToken(ResponseUtils.getAuthTokenFromResponseHeader());
     }
@@ -36,7 +37,7 @@ public class LoginStep {
 
     @Then("Verify login error message")
     public void verifyLoginErrorMessage() {
-        String errorMessage =  ResponseUtils.getStringFromResponse("message");
+        String errorMessage = ResponseUtils.getStringFromResponse("message");
         Assertions.assertThat(errorMessage.contains("email"));
     }
 }

@@ -1,4 +1,4 @@
-package providers;
+package providers.bodyProviders;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

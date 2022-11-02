@@ -17,5 +17,5 @@ Feature: API test for Open School register functionality
     Then Status code should be 400
 
     Examples:
-      | firstname    | lastname   | email              |  password  |
-      | Test         |   t        | testmail           |     hjk1   |
+      | firstname | lastname | email    | password |
+      | Test      | t        | testmail | hjk1     |

@@ -4,8 +4,11 @@ Feature: API test for Open School: mentor-controller
 
   Background:
     Given Setup Rest Assured
-    When Login by valid "Test1234*" password and "anidarbinyan14@gmail.com" email
 
-  Scenario: Find all mentors
+  Scenario Outline: Find all mentors
+    When Login by valid "<email>" email and "<password>" password
     When Get all mentors
     Then Status code should be 200
+    Examples:
+      | email     | password |
+      | userEmail | userPsd  |

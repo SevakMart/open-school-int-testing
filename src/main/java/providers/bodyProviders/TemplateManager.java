@@ -1,4 +1,4 @@
-package providers;
+package providers.bodyProviders;
 
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;

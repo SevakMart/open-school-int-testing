@@ -3,7 +3,7 @@ package steps.auth;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pojo.Student;
-import providers.StudentProvider;
+import providers.dataProviders.StudentProvider;
 import utils.RequestsUtils;
 import utils.ResponseUtils;
 
