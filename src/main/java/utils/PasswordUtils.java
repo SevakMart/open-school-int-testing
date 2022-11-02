@@ -1,38 +1,26 @@
 package utils;
 
-import java.security.SecureRandom;
-import java.util.Random;
+import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PasswordUtils {
-    static char[] SYMBOLS = "~!@#$%^&*()_{}".toCharArray();
-    static char[] LOWERCASE = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    static char[] UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-    static char[] NUMBERS = "0123456789".toCharArray();
-    static char[] ALL_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_{}".toCharArray();
-    static Random rand = new SecureRandom();
-
-    public static String getPassword(int length) {
-        assert length >= 4;
-        char[] password = new char[length];
-
-        //get the requirements out of the way
-        password[0] = LOWERCASE[rand.nextInt(LOWERCASE.length)];
-        password[1] = UPPERCASE[rand.nextInt(UPPERCASE.length)];
-        password[2] = NUMBERS[rand.nextInt(NUMBERS.length)];
-        password[3] = SYMBOLS[rand.nextInt(SYMBOLS.length)];
-
-        //populate rest of the password with random chars
-        for (int i = 4; i < length; i++) {
-            password[i] = ALL_CHARS[rand.nextInt(ALL_CHARS.length)];
-        }
-
-        //shuffle it up
-        for (int i = 0; i < password.length; i++) {
-            int randomPosition = rand.nextInt(password.length);
-            char temp = password[i];
-            password[i] = password[randomPosition];
-            password[randomPosition] = temp;
-        }
-        return new String(password);
+    public static String generateStrongPassword() {
+        String upperCaseLetters = RandomStringUtils.random(2, 65, 90, true, true);
+        String lowerCaseLetters = RandomStringUtils.random(3, 97, 122, true, true);
+        String numbers = RandomStringUtils.randomNumeric(2);
+        String specialChar = RandomStringUtils.random(1, 35, 38, false, false);
+        String combinedChars = upperCaseLetters.concat(lowerCaseLetters)
+                .concat(numbers)
+                .concat(specialChar);
+        List<Character> pwdChars = combinedChars.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.toList());
+        Collections.shuffle(pwdChars);
+        return pwdChars.stream()
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
     }
 }

@@ -1,6 +1,6 @@
 package steps;
 
-import utils.ResponseUtils;
+import utils.api.ResponseUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
@@ -25,15 +25,19 @@ public class CommonSteps {
 
     @Then("Status code should be {int}")
     public void statusCodeShouldBe(int expectedStatusCode) {
+        System.out.println(ResponseUtils.getResponse().extract().asPrettyString());
         int actualStatusCode = ResponseUtils.getStatusCodeFromResponse();
         logger.info("The actualStatusCode is {}", actualStatusCode);
         Assertions.assertThat(actualStatusCode).isEqualTo(expectedStatusCode);
     }
-
     @Then("Validate entity creation status")
     public void validateEntityCreationStatus() {
         int actualStatusCode = ResponseUtils.getStatusCodeFromResponse();
         Assertions.assertThat(actualStatusCode).isEqualTo(HttpStatus.SC_CREATED);
     }
 
+    @Then("Validate response JsonSchema {string}")
+    public void validateResponseJsonSchema(String schemaPath) {
+        ResponseUtils.validateResponseAgainstJSONSchema(schemaPath);
+    }
 }

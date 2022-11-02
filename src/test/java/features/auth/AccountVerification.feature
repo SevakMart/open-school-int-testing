@@ -10,16 +10,13 @@ Feature: API test for Open School account verification functionality
     Then Resend email for account verification
     And Verify account verification success status code
 
-    Scenario Outline: Invalid user is not able to resend email for account verification
-      Given Invalid user <user> requests for account verification
-      And Verify account verification error status code
+  Scenario Outline: Invalid user is not able to resend email for account verification
+    Given Invalid user <user> requests for account verification
+    And Verify account verification error status code
 
-      Examples:
-      |user|
-      |null|
-      |-1  |
-      |1v  |
-      |#*  |
-
-
-
+    Examples:
+      | user |
+      | null |
+      | -1   |
+      | 1v   |
+      | #*   |

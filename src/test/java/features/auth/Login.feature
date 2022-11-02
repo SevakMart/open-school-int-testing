@@ -6,23 +6,23 @@ Feature: API test for Open School login functionality
     Given Setup Rest Assured
 
   Scenario Outline: User with valid credentials is able to login
-    When Login by valid "<password>" password and "<email>" email
-    Then Status code should be <statusCode>
+    When Login by valid "<email>" email and "<password>" password
+    Then Status code should be 200
     And Validate login success response values
 
     Examples:
-      | password     | email                        | statusCode   |
-      | Test1234*    | anidarbinyan14@gmail.com     | 200          |
-      | Password1!   | sevakmart@gmail.com          | 200          |
+      | password | email      |
+      | adminPsd | adminEmail |
+      | userPsd  | userEmail  |
 
 
   Scenario Outline: User with invalid credentials is not able to login
     When Login by invalid "<password>" password and "<email>" email
-    Then Status code should be <statusCode>
+    Then Status code should be 401
     And Validate login error response values
     And Verify login error message
 
     Examples:
-      | password     | email                        | statusCode   |
-      | Tgggg        | test                         | 401          |
-      | Tgggg        | anidarbinyan14@gmail.com     | 401          |
+      | password | email                    |
+      | Tgggg    | test                     |
+      | Tgggg    | anidarbinyan14@gmail.com |

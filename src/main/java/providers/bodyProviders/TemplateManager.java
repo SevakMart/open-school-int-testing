@@ -1,4 +1,4 @@
-package providers;
+package providers.bodyProviders;
 
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class TemplateManager {
 
-    private static final String TEMPLATE_DIRECTORY = "src/main/resources/";
+    private static final String TEMPLATE_DIRECTORY = "src/test/resources/ftl/";
     private final Configuration config;
 
     public TemplateManager() {
