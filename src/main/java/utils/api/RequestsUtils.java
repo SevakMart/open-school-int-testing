@@ -1,4 +1,4 @@
-package utils;
+package utils.api;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -7,6 +7,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import providers.dataProviders.SharedTestData;
 
 import java.io.File;
 import java.util.Map;

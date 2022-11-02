@@ -1,13 +1,13 @@
 package steps.categories;
 
-import config.TestDataProvider;
+import providers.dataProviders.TestDataProvider;
 import io.cucumber.java.en.Then;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.Assertions;
 import providers.bodyProviders.ModifyCategoryBodyProvider;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
+import providers.dataProviders.SharedTestData;
 
 public class ModifyCategorySteps {
 

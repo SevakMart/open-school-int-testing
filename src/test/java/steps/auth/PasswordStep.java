@@ -1,6 +1,6 @@
 package steps.auth;
 
-import config.TestDataProvider;
+import providers.dataProviders.TestDataProvider;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,9 +9,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.Assertions;
 import providers.bodyProviders.EmailBodyProvider;
 import providers.bodyProviders.ResetBodyProvider;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
+import providers.dataProviders.SharedTestData;
 
 
 public class PasswordStep {
@@ -36,7 +36,7 @@ public class PasswordStep {
     @Then("Get reset password token by provided email")
     public void getResetPasswordTokenByProvidedEmail() {
         AuthManager manager = new AuthManager();
-        String resetPassToken = manager.getPasswordToken(TestDataProvider.getPropertyValue("userEmail"));
+        String resetPassToken = manager.getResetPasswordToken(TestDataProvider.getPropertyValue("userEmail"));
         SharedTestData.setResetPasswordToken(resetPassToken);
     }
 

@@ -2,9 +2,9 @@ package steps.mentor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
+import providers.dataProviders.SharedTestData;
 import io.cucumber.java.en.When;
 
 

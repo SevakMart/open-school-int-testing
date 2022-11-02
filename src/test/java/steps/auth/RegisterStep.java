@@ -4,8 +4,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pojo.Student;
 import providers.dataProviders.StudentProvider;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
 
 public class RegisterStep {
     @When("Register random student")

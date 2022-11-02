@@ -1,4 +1,6 @@
-package config;
+package db;
+
+import utils.PropertiesReader;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

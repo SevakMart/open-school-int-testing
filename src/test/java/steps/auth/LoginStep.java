@@ -1,10 +1,10 @@
 package steps.auth;
 
-import config.TestDataProvider;
+import providers.dataProviders.TestDataProvider;
 import org.assertj.core.api.Assertions;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
+import providers.dataProviders.SharedTestData;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

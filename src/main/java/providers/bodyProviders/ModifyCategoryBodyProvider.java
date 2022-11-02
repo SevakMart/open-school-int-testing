@@ -2,7 +2,7 @@ package providers.bodyProviders;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.ResponseUtils;
+import utils.api.ResponseUtils;
 
 import java.util.HashMap;
 import java.util.Map;

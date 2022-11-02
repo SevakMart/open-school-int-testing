@@ -1,7 +1,4 @@
-package utils;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package providers.dataProviders;
 
 public final class SharedTestData {
 

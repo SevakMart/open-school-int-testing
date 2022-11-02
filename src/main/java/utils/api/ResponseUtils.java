@@ -1,4 +1,4 @@
-package utils;
+package utils.api;
 
 import com.github.fge.jsonschema.SchemaVersion;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;

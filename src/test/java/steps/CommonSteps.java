@@ -1,6 +1,6 @@
 package steps;
 
-import utils.ResponseUtils;
+import utils.api.ResponseUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;

@@ -7,9 +7,9 @@ import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import pojo.Student;
 import providers.dataProviders.StudentProvider;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
+import providers.dataProviders.SharedTestData;
 
 public class AccountVerificationStep {
     @Given("Prepare user for account verification")

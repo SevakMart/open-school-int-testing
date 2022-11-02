@@ -1,6 +1,7 @@
 package pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.cucumber.messages.internal.com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

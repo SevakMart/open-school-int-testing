@@ -1,6 +1,6 @@
 package manager;
 
-import config.DBConnectionProvider;
+import db.DBConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,8 +9,8 @@ import java.sql.Statement;
 
 public class CategoryManager {
 
-    Statement statement;
-    ResultSet resultSet;
+    private Statement statement;
+    private ResultSet resultSet;
 
     public int getParentCategoryId() {
         try (final Connection connection = DBConnectionProvider.getInstance().getConnection()) {

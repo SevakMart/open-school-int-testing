@@ -3,9 +3,9 @@ package steps.categories;
 import io.cucumber.java.en.Then;
 import manager.CategoryManager;
 import org.assertj.core.api.Assertions;
-import utils.RequestsUtils;
-import utils.ResponseUtils;
-import utils.SharedTestData;
+import utils.api.RequestsUtils;
+import utils.api.ResponseUtils;
+import providers.dataProviders.SharedTestData;
 
 public class DeleteCategorysteps {
 
