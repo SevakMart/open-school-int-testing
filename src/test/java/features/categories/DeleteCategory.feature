@@ -4,29 +4,21 @@ Feature: API test for Open School: category-controller
 
   Background:
     Given Setup Rest Assured
+    When Login by valid "adminEmail" email and "adminPsd" password
 
-  Scenario Outline: Verify that SubCategory is deleted
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Verify that SubCategory is deleted
     When Create parentCategory with provided file
     When Create subCategory
     Then Delete category by Id
     Then Status code should be 204
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Verify that parentCategory delete is not allowed
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Verify that parentCategory delete is not allowed
     Then Create parentCategory with provided file
     Then Calling delete Parentcategory by Id
     Then Status code should be 400
     Then Validate message of response
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
   Scenario: Verify that user without admin role cannot delete category
-    When Login by valid "adminEmail" email and "adminPsd" password
     When Create parentCategory with provided file
     When Login by valid "userEmail" email and "userPsd" password
     Then Calling delete Parentcategory by Id
