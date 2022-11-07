@@ -97,7 +97,7 @@ public class RequestsUtils {
         logger.info(response.extract().body().asPrettyString());
     }
 
-    public static void patchCategoryByTitle(String endpoint, Object body, int categoryId) {
+    public static void patchCategoryByTitle(String endpoint, Object body, String categoryId) {
         logger.info(endpoint, body, SharedTestData.getToken());
         response = RestAssured
                 .given()

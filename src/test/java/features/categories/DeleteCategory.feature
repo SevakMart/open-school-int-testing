@@ -17,19 +17,17 @@ Feature: API test for Open School: category-controller
 
   Scenario Outline: Verify that parentCategory delete is not allowed
     When Login by valid "<email>" email and "<password>" password
-    Then Get category from DB
-    Then Delete Parentcategory by Id
+    Then Create parentCategory with provided file
+    Then Calling delete Parentcategory by Id
     Then Status code should be 400
     Then Validate message of response
     Examples:
       | password | email      |
       | adminPsd | adminEmail |
 
-  Scenario Outline: Verify that user without admin role cannot delete category
-    When Login by valid "<email>" email and "<password>" password
-    Then Get category from DB
-    Then Delete Parentcategory by Id
+  Scenario: Verify that user without admin role cannot delete category
+    When Login by valid "adminEmail" email and "adminPsd" password
+    When Create parentCategory with provided file
+    When Login by valid "userEmail" email and "userPsd" password
+    Then Calling delete Parentcategory by Id
     Then Status code should be 403
-    Examples:
-      | password | email     |
-      | userPsd  | userEmail |

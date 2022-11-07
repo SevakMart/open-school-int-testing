@@ -1,20 +1,12 @@
 package steps.categories;
 
 import io.cucumber.java.en.Then;
-import manager.CategoryManager;
 import org.assertj.core.api.Assertions;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
 import providers.dataProviders.SharedTestData;
 
 public class DeleteCategorysteps {
-
-    @Then("Get Subcategory from DB")
-    public void getSubcategoryFromDB() {
-        CategoryManager categoryIdManager = new CategoryManager();
-        int categoryId = categoryIdManager.getSubCategoryId();
-        SharedTestData.setCategoryId(categoryId);
-    }
 
     @Then("Delete category by Id")
     public void deleteCategoryById() {
@@ -24,11 +16,11 @@ public class DeleteCategorysteps {
     @Then("Validate message of response")
     public void validateMessageOfResponse() {
         String message = "Deleting the parent category is not allowed";
-        Assertions.assertThat(ResponseUtils.getStringFromResponse("message").equals(message));
+        Assertions.assertThat(ResponseUtils.getStringFromResponse("message")).isEqualTo(message);
     }
 
-    @Then("Delete Parentcategory by Id")
-    public void deleteParentcategoryById() {
+    @Then("Calling delete Parentcategory by Id")
+    public void callingDeleteParentcategoryById() {
         RequestsUtils.delete("categories/" + SharedTestData.getCategoryId());
     }
 }

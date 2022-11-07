@@ -10,7 +10,6 @@ Feature: API test for Open School password reset and forget functionality
     Then Status code should be 200
     And Verify forgot password success message
 
-
   Scenario: User with invalid email is not able to get token via email in case of user forgets its password
     Given Request of password forget with provided invalid email
     Then Status code should be 400
@@ -20,4 +19,5 @@ Feature: API test for Open School password reset and forget functionality
     Given Request of password forget with provided email
     Then Get reset password token by provided email
     Then Make request with token, new password and confirmed password
+    Then Status code should be 200
     And Verify reset password success message
