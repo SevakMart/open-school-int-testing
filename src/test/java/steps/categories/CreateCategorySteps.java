@@ -17,7 +17,7 @@ public class CreateCategorySteps {
     @When("Create parentCategory with provided file")
     public void createParentCategoryWithProvidedFile() {
         Map<String, Object> body = new HashMap<>();
-        body.put("title", RandomStringUtils.randomAlphabetic(5));
+        body.put("title", "TestParent " + RandomStringUtils.randomAlphabetic(5));
         RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
         SharedTestData.setCategoryId(ResponseUtils.getObjectFromResponse("", Category.class).getId());
     }
@@ -26,7 +26,7 @@ public class CreateCategorySteps {
     public void createSubCategory() {
         String parentCategoryId = String.valueOf(SharedTestData.getCategoryId());
         Map<String, Object> body = new HashMap<>();
-        body.put("title", RandomStringUtils.randomAlphabetic(5));
+        body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(5));
         body.put("parentCategoryId", parentCategoryId);
         RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
         SharedTestData.setSubCategoryId(ResponseUtils.getObjectFromResponse("", Category.class).getId());

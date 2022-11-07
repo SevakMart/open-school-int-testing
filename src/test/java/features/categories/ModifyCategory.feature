@@ -4,67 +4,40 @@ Feature: API test for Open School: category-controller
 
   Background:
     Given Setup Rest Assured
+    When Login by valid "adminEmail" email and "adminPsd" password
 
-  Scenario Outline: Modify data of parent categories by title
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of parent categories by title
     Then Modify parent category by title
     Then Status code should be 200
     Then Validate response body by title
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Modify data of subcategories by title
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of subcategories by title
     Then Modify subcategory by title
     Then Status code should be 200
     Then Validate response body by title
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Modify data of categories or subcategories by image
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of categories or subcategories by image
     When Create parentCategory with provided file
     Then Modify category or subcategory by image
     Then Status code should be 200
     Then Validate response body by image
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Modify data of categories or subcategories by invalid category id
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of categories or subcategories by invalid category id
     Then Modify category or subcategory by invalid category id
     Then Status code should be 400
     Then Validate error message about invalid category
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Modify data of categories or subcategories by invalid parentCategoryId
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of categories or subcategories by invalid parentCategoryId
     Then Modify category or subcategory by invalid parentCategoryId
     Then Status code should be 400
     Then Validate error message about invalid category
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Modify data of categories or subcategories by invalid title
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of categories or subcategories by invalid title
     Then Modify category or subcategory by invalid title
     Then Status code should be 400
     Then Validate error message about invalid category
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
 
-  Scenario Outline: Modify data of categories or subcategories by existing title
-    When Login by valid "<email>" email and "<password>" password
+  Scenario: Modify data of categories or subcategories by existing title
     Then Modify category or subcategory by existing title
     Then Status code should be 400
     Then Validate error message about existing title
-    Examples:
-      | password | email      |
-      | adminPsd | adminEmail |
