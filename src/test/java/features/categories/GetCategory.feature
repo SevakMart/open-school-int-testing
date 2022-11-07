@@ -20,7 +20,6 @@ Feature: API test for Open School: category-controller
 
   Scenario Outline: Find all categories by title mapped by subcategories
     When Login by valid "<email>" email and "<password>" password
-    Then Get any category title from DB
     Then Get category by title
     Then Status code should be 200
     Examples:
@@ -37,7 +36,7 @@ Feature: API test for Open School: category-controller
 
   Scenario Outline: Find category or subcategory by id
     When Login by valid "<email>" email and "<password>" password
-    Then Get category from DB
+    Then Create parentCategory with provided file
     Then Find category or subcategory by id
     Then Status code should be 200
     Then Validate categoryid success response values

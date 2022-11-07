@@ -1,6 +1,6 @@
 package steps.categories;
 
-import manager.CategoryManager;
+import providers.dataProviders.TestDataProvider;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
 import providers.dataProviders.SharedTestData;
@@ -22,17 +22,11 @@ public class GetCategorySteps {
         SharedTestData.setToken(ResponseUtils.getAuthTokenFromResponseHeader());
     }
 
-    @Then("Get any category title from DB")
-    public void getCategoryTitleFromDB() {
-        CategoryManager categoryTitleManager = new CategoryManager();
-        String categoryTitle = categoryTitleManager.getCategoryByTitle();
-        SharedTestData.setCategoryTitle(categoryTitle);
-    }
 
     @Then("Get category by title")
     public void findAllCategoriesByTitle() {
         Map<String, Object> queryParams = new HashMap<>();
-        queryParams.put("title", SharedTestData.getCategoryTitle());
+        queryParams.put("title", TestDataProvider.getPropertyValue("categoryTitle"));
         RequestsUtils.getByQueryParams("categories/subcategories", queryParams);
     }
 
@@ -46,17 +40,9 @@ public class GetCategorySteps {
         RequestsUtils.get("parentCategories");
     }
 
-    @Then("Get category from DB")
-    public void getCategoryFromDB() {
-        CategoryManager categoryIdManager = new CategoryManager();
-        int categoryId = categoryIdManager.getParentCategoryId();
-        SharedTestData.setCategoryId(categoryId);
-    }
-
     @Then("Find category or subcategory by id")
     public void findCategoryOrSubcategoryById() {
-        int categoryId = SharedTestData.getCategoryId();
-        RequestsUtils.get("categories/" + categoryId, SharedTestData.getToken());
+        RequestsUtils.get("categories/" + SharedTestData.getCategoryId(), SharedTestData.getToken());
     }
 
     @Then("Validate categoryid success response values")

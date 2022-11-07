@@ -55,13 +55,13 @@ public class CreateCategorySteps {
     @Then("Validate new category creation without image failure response message")
     public void validateNewCategoryCreationWithoutImageFailureResponseMessage() {
         String message = "Category image is required";
-        Assertions.assertThat(ResponseUtils.getStringFromResponse("image").equals(message));
+        Assertions.assertThat(ResponseUtils.getStringFromResponse("image")).isEqualTo(message);
     }
 
     @Then("Validate new category creation without title failure response message")
     public void validateNewCategoryCreationWithoutTitleFailureResponseMessage() {
         String message = "Category title is required";
-        Assertions.assertThat(ResponseUtils.getStringFromResponse("title").equals(message));
+        Assertions.assertThat(ResponseUtils.getStringFromResponse("title")).isEqualTo(message);
     }
 
     @When("Fail parentCategory creatiion without admin role")
