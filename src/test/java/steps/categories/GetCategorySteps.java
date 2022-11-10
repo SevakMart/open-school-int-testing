@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class GetCategorySteps {
 
+    private Map<String, Object> params = new HashMap<>();
     @Then("Get all categories and relevant subcategories")
     public void getAllCategoriesAndRelevantSubcategories() {
         RequestsUtils.get("categories", SharedTestData.getToken());
@@ -22,12 +23,10 @@ public class GetCategorySteps {
         SharedTestData.setToken(ResponseUtils.getAuthTokenFromResponseHeader());
     }
 
-
     @Then("Get category by title")
     public void findAllCategoriesByTitle() {
-        Map<String, Object> queryParams = new HashMap<>();
-        queryParams.put("title", TestDataProvider.getPropertyValue("categoryTitle"));
-        RequestsUtils.getByQueryParams("categories/subcategories", queryParams);
+        params.put("title", TestDataProvider.getPropertyValue("categoryTitle"));
+        RequestsUtils.getByQueryParams("categories/subcategories", params);
     }
 
     @When("Get all categories and relevant subcategories without login")

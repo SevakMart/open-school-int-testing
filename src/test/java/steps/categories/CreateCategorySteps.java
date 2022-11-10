@@ -14,9 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateCategorySteps {
+
+    private Map<String, Object> body = new HashMap<>();
+
     @When("Create parentCategory with provided file")
     public void createParentCategoryWithProvidedFile() {
-        Map<String, Object> body = new HashMap<>();
         body.put("title", "TestParent " + RandomStringUtils.randomAlphabetic(5));
         RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
         SharedTestData.setCategoryId(ResponseUtils.getObjectFromResponse("", Category.class).getId());
@@ -25,8 +27,7 @@ public class CreateCategorySteps {
     @When("Create subCategory")
     public void createSubCategory() {
         String parentCategoryId = String.valueOf(SharedTestData.getCategoryId());
-        Map<String, Object> body = new HashMap<>();
-        body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(5));
+        body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(3));
         body.put("parentCategoryId", parentCategoryId);
         RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
         SharedTestData.setSubCategoryId(ResponseUtils.getObjectFromResponse("", Category.class).getId());
@@ -66,8 +67,20 @@ public class CreateCategorySteps {
 
     @When("Fail parentCategory creatiion without admin role")
     public void failParentCategoryCreatiionWithoutAdminRole() {
-        Map<String, Object> body = new HashMap<>();
-        body.put("title", RandomStringUtils.randomAlphabetic(5));
+        body.put("title", RandomStringUtils.randomAlphabetic(3));
         RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
+    }
+
+    @Then("Create subcategory whose parentCategory is subCategory for another category")
+    public void createSubcategoryWhoseParentCategoryIsSubCategoryForAnotherCategory() {
+        body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(3));
+        body.put("parentCategoryId", TestDataProvider.getPropertyValue("subCategoryId"));
+        RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
+    }
+
+    @Then("Validate response message of nested category creation's fail")
+    public void validateResponseMessageOfNestedCategoryCreationSFail() {
+        String message = "The parent category cannot be a subcategory for another category.";
+        Assertions.assertThat(ResponseUtils.getStringFromResponse("message")).isEqualTo(message);
     }
 }

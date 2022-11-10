@@ -11,7 +11,6 @@ Feature: API test for Open School: category-controller
     Then Status code should be 201
     Then Validate response by JsonSchema
 
-
   Scenario: New category creation is not possible without attaching an image
     When Login by valid "adminEmail" email and "adminPsd" password
     When Invalid filePath during parentCategory creation
@@ -35,3 +34,9 @@ Feature: API test for Open School: category-controller
     When Login by valid "userEmail" email and "userPsd" password
     When Fail parentCategory creatiion without admin role
     Then Status code should be 403
+
+  Scenario: Creation subCategory which is a parentCategory for another category is not possible
+    When Login by valid "adminEmail" email and "adminPsd" password
+    Then Create subcategory whose parentCategory is subCategory for another category
+    Then Status code should be 400
+    Then Validate response message of nested category creation's fail
