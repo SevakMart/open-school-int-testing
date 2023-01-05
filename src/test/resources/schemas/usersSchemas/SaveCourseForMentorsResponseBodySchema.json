@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "difficulty": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "rating",
+    "difficulty",
+    "keywords"
+  ]
+}

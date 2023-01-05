@@ -1,12 +1,14 @@
 package pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User {
+public class Mentor {
 
     @JsonProperty("id")
     private int id;
@@ -16,12 +18,14 @@ public class User {
     private String surname;
     @JsonProperty("professionName")
     private String professionName;
+    @JsonProperty("companyName")
+    private String companyName;
     @JsonProperty("courseCount")
     private int courseCount;
     @JsonProperty("userImgPath")
     private String userImgPath;
-    @JsonProperty("roleType")
-    private String roleType;
-    @JsonProperty("company")
-    private String company;
+    @JsonProperty("emailPath")
+    private String emailPath;
+    @JsonProperty("linkedinPath")
+    private String linkedinPath;
 }

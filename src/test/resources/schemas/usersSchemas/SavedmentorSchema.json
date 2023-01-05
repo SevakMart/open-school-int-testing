@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "integer"
+    },
+    "email": {
+      "type": "string"
+    },
+    "mentors": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "required": [
+    "userId",
+    "email",
+    "mentors"
+  ]
+}

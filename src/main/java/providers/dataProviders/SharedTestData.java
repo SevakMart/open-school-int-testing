@@ -1,8 +1,10 @@
 package providers.dataProviders;
 
+import java.util.List;
+
 public final class SharedTestData {
 
-    private static String token;
+    private static String token = "";
 
     private static String resetPasswordToken;
 
@@ -12,22 +14,22 @@ public final class SharedTestData {
 
     private static int subCategoryId;
 
+    private static List<?> usersSavedMentorsList;
+
     public static int getSubCategoryId() {
         return subCategoryId;
     }
 
+    public static List<?> getUsersSavedMentorsList() {
+        return usersSavedMentorsList;
+    }
+
+    public static void setUsersSavedMentorsList(List<?> usersSavedMentorsList) {
+        SharedTestData.usersSavedMentorsList = usersSavedMentorsList;
+    }
+
     public static void setSubCategoryId(int subCategoryId) {
         SharedTestData.subCategoryId = subCategoryId;
-    }
-
-    private static String categoryTitle;
-
-    public static String getCategoryTitle() {
-        return categoryTitle;
-    }
-
-    public static void setCategoryTitle(String categoryTitle) {
-        SharedTestData.categoryTitle = categoryTitle;
     }
 
     public static void setCategoryId(int categoryId) {

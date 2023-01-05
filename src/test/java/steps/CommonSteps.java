@@ -25,7 +25,6 @@ public class CommonSteps {
 
     @Then("Status code should be {int}")
     public void statusCodeShouldBe(int expectedStatusCode) {
-        System.out.println(ResponseUtils.getResponse().extract().asPrettyString());
         int actualStatusCode = ResponseUtils.getStatusCodeFromResponse();
         logger.info("The actualStatusCode is {}", actualStatusCode);
         Assertions.assertThat(actualStatusCode).isEqualTo(expectedStatusCode);

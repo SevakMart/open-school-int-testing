@@ -1,5 +1,7 @@
 package steps.categories;
 
+import org.assertj.core.api.Assertions;
+import pojo.Category;
 import providers.dataProviders.TestDataProvider;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
@@ -8,6 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GetCategorySteps {
@@ -34,11 +37,6 @@ public class GetCategorySteps {
         RequestsUtils.get("categories");
     }
 
-    @Then("Get all parent categories")
-    public void getAllParentCategories() {
-        RequestsUtils.get("parentCategories");
-    }
-
     @Then("Find category or subcategory by id")
     public void findCategoryOrSubcategoryById() {
         RequestsUtils.get("categories/" + SharedTestData.getCategoryId(), SharedTestData.getToken());
@@ -47,5 +45,22 @@ public class GetCategorySteps {
     @Then("Validate categoryid success response values")
     public void validateCategoryidSuccessResponseValues() {
         ResponseUtils.validateResponseAgainstJSONSchema("schemas/categorySchemas/getCategoryByIdRequest.json");
+    }
+
+    @Then("Get all parent categories as list")
+    public void getAllParentCategoriesAsList() {
+        RequestsUtils.get("categories/parentCategories", SharedTestData.getToken());
+    }
+
+    @Then("Validate the count of response elements")
+    public void validateTheCountOfResponseElements() {
+        List<Category> list = ResponseUtils.getListFromResponse("content.", Category.class);
+        Assertions.assertThat(list.size()).isEqualTo(ResponseUtils
+                                            .getIntFromResponse("numberOfElements"));
+    }
+
+    @Then("Validate by jsonSchema")
+    public void validateByJsonSchema() {
+        ResponseUtils.validateResponseAgainstJSONSchema("schemas/categorySchemas/GetAllCategoryRequestSchema.json");
     }
 }
