@@ -6,6 +6,8 @@ import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
 
+import java.util.List;
+
 public class ResponseUtils {
 
     public static ValidatableResponse getResponse() {
@@ -25,6 +27,20 @@ public class ResponseUtils {
                 .extract()
                 .jsonPath()
                 .getString(path);
+    }
+
+    public static <T> List<T> getListFromResponse(String path, Class<T> type) {
+        return getResponse()
+                .extract()
+                .jsonPath()
+                .getList(path, type);
+    }
+
+    public static <T> List<T> getListFromResponseWithoutType(String path) {
+        return getResponse()
+                .extract()
+                .jsonPath()
+                .getList(path);
     }
 
     public static String getAuthTokenFromResponseHeader() {

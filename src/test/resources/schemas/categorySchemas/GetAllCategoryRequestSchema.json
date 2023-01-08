@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "parentAndSubCategoriesMap": {
+      "type": "object",
+      "properties": {
+        "\\w+\\{+[id].*": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "logoPath": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "logoPath"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

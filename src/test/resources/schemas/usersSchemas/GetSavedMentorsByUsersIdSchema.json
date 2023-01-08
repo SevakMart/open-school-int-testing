@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "surname": {
+              "type": "string"
+            },
+            "professionName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "companyName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "courseCount": {
+              "type": "integer"
+            },
+            "userImgPath": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "emailPath": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "linkedinPath": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "surname",
+            "professionName",
+            "companyName",
+            "courseCount",
+            "userImgPath",
+            "emailPath",
+            "linkedinPath"
+          ]
+        }
+      ]
+    },
+    "pageable": {
+      "type": "object",
+      "properties": {
+        "sort": {
+          "type": "object",
+          "properties": {
+            "sorted": {
+              "type": "boolean"
+            },
+            "empty": {
+              "type": "boolean"
+            },
+            "unsorted": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "sorted",
+            "empty",
+            "unsorted"
+          ]
+        },
+        "pageNumber": {
+          "type": "integer"
+        },
+        "pageSize": {
+          "type": "integer"
+        },
+        "offset": {
+          "type": "integer"
+        },
+        "paged": {
+          "type": "boolean"
+        },
+        "unpaged": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sort",
+        "pageNumber",
+        "pageSize",
+        "offset",
+        "paged",
+        "unpaged"
+      ]
+    },
+    "last": {
+      "type": "boolean"
+    },
+    "totalElements": {
+      "type": "integer"
+    },
+    "totalPages": {
+      "type": "integer"
+    },
+    "sort": {
+      "type": "object",
+      "properties": {
+        "sorted": {
+          "type": "boolean"
+        },
+        "empty": {
+          "type": "boolean"
+        },
+        "unsorted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sorted",
+        "empty",
+        "unsorted"
+      ]
+    },
+    "first": {
+      "type": "boolean"
+    },
+    "size": {
+      "type": "integer"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "numberOfElements": {
+      "type": "integer"
+    },
+    "empty": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "content",
+    "pageable",
+    "last",
+    "totalElements",
+    "totalPages",
+    "sort",
+    "first",
+    "size",
+    "number",
+    "numberOfElements",
+    "empty"
+  ]
+}

@@ -49,12 +49,14 @@ public class RequestsUtils {
                 .when()
                 .delete(endpoint)
                 .then();
+        logger.info(response.extract().body().asPrettyString());
     }
 
     public static void post(String endpoint, Object body) {
         logger.info(endpoint, body);
         response = RestAssured
                 .given()
+                .header("Authorization", SharedTestData.getToken())
                 .spec(getRequestSpecification())
                 .body(body)
                 .when()
@@ -71,7 +73,6 @@ public class RequestsUtils {
                 .formParams(body)
                 .post(endpoint)
                 .then();
-
         logger.info(response.extract().body().asPrettyString());
     }
 
