@@ -16,6 +16,12 @@ public final class SharedTestData {
 
     private static List<?> usersSavedMentorsList;
 
+    private static int faqsId;
+
+    private static String faqsQuestion;
+
+    private static String faqsAnswer;
+
     public static int getSubCategoryId() {
         return subCategoryId;
     }
@@ -62,5 +68,29 @@ public final class SharedTestData {
 
     public static void setUserId(int userId) {
         SharedTestData.userId = userId;
+    }
+
+    public static int getFaqsId() {
+        return faqsId;
+    }
+
+    public static void setFaqsId(int faqsId) {
+        SharedTestData.faqsId = faqsId;
+    }
+
+    public static void setFaqsQuestion(String faqsQuestion) {
+        SharedTestData.faqsQuestion = faqsQuestion;
+    }
+
+    public static String getFaqsQuestion() {
+        return faqsQuestion;
+    }
+
+    public static String getFaqsAnswer() {
+        return faqsAnswer;
+    }
+
+    public static void setFaqsAnswer(String faqsAnswer) {
+        SharedTestData.faqsAnswer = faqsAnswer;
     }
 }
