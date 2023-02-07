@@ -53,9 +53,9 @@ Feature: API test for Open School: user-mentor-controller
       | "arevik"    |
       | "vik"       |
       | "Arakelyan" |
-      | "Brenden"   |
-      | "brenden"   |
-      | "bre"       |
+      | "Mentor"   |
+      | "mentoryan"   |
+      | "ment"       |
 
   Scenario Outline: Search saved mentors by invalid names
     Then Get authorized user's id

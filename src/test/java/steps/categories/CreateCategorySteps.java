@@ -74,7 +74,7 @@ public class CreateCategorySteps {
     @Then("Create subcategory whose parentCategory is subCategory for another category")
     public void createSubcategoryWhoseParentCategoryIsSubCategoryForAnotherCategory() {
         body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(3));
-        body.put("parentCategoryId", TestDataProvider.getPropertyValue("subCategoryId"));
+        body.put("parentCategoryId", SharedTestData.getSubCategoryId());
         RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
     }
 

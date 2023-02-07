@@ -8,7 +8,10 @@
       "type": "string"
     },
     "rating": {
-      "type": "number"
+      "type":[
+        "number",
+        "null"
+      ]
     },
     "difficulty": {
       "type": "string"

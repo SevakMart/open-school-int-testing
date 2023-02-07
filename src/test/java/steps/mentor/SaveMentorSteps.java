@@ -34,6 +34,7 @@ public class SaveMentorSteps {
     @Then("Get authorized user's id")
     public void getUserSId() {
         SharedTestData.setUserId(ResponseUtils.getIntFromResponse("id"));
+        logger.info("The  authorized user's id is {}", ResponseUtils.getIntFromResponse("id"));
     }
 
     @Then("Save mentor for user")
@@ -66,6 +67,7 @@ public class SaveMentorSteps {
     @Then("Get saved mentors with authorized user's id")
     public void getSavedMentorsWithAuthorizedUserSId() {
         RequestsUtils.get("mentors/" + SharedTestData.getUserId(), SharedTestData.getToken());
+        logger.info("The autherized user's id is {}", SharedTestData.getUserId());
     }
 
     @Then("Validate saved mentor's by userId response body by jsonSchema")
@@ -112,6 +114,7 @@ public class SaveMentorSteps {
     @Then("Validate the response name is the same as the one being searched for")
     public void validateTheResponseNameIsTheSameAsTheOneBeingSearchedFor() {
         String responseName = ResponseUtils.getObjectFromResponse("content[0]", Mentor.class).getName();
+        logger.info("Mentor's name is {}", responseName);
         Assertions.assertThat(responseName).isEqualTo(TestDataProvider.getPropertyValue("savedMentorName"));
     }
 
