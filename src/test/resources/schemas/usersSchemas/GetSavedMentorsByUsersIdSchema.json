@@ -30,7 +30,10 @@
               ]
             },
             "courseCount": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "userImgPath": {
               "type": [

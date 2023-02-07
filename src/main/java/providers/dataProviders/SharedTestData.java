@@ -16,6 +16,16 @@ public final class SharedTestData {
 
     private static List<?> usersSavedMentorsList;
 
+    private static int courseId;
+
+    public static int getCourseId() {
+        return courseId;
+    }
+
+    public static void setCourseId(int courseId) {
+        SharedTestData.courseId = courseId;
+    }
+
     private static int faqsId;
 
     private static String faqsQuestion;
