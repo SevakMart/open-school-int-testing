@@ -132,4 +132,17 @@ public class RequestsUtils {
                 .setAccept(ContentType.JSON)
                 .build();
     }
+
+    public static void put(String endpoint, String body){
+        logger.info(endpoint);
+        response = RestAssured
+                .given()
+                .header("Authorization", SharedTestData.getToken())
+                .spec(getRequestSpecification())
+                .body(body)
+                .when()
+                .put(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
 }
