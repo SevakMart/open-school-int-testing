@@ -18,14 +18,6 @@ public final class SharedTestData {
 
     private static int courseId;
 
-    public static int getCourseId() {
-        return courseId;
-    }
-
-    public static void setCourseId(int courseId) {
-        SharedTestData.courseId = courseId;
-    }
-
     private static int faqsId;
 
     private static String faqsQuestion;
@@ -102,5 +94,13 @@ public final class SharedTestData {
 
     public static void setFaqsAnswer(String faqsAnswer) {
         SharedTestData.faqsAnswer = faqsAnswer;
+    }
+
+    public static int getCourseId() {
+        return courseId;
+    }
+
+    public static void setCourseId(int courseId) {
+        SharedTestData.courseId = courseId;
     }
 }
