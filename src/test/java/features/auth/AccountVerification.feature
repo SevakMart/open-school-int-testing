@@ -4,19 +4,32 @@ Feature: API test for Open School account verification functionality
 
   Background:
     Given Setup Rest Assured
-
-  Scenario: User resends email for account verification
     Given Prepare user for account verification
-    Then Resend email for account verification
+
+  Scenario: User is able to resend email for account verification
+    Then Resend email as the previous has already expired
     And Verify account verification success status code
+    Then Delete the user
 
-  Scenario Outline: Invalid user is not able to resend email for account verification
-    Given Invalid user <user> requests for account verification
-    And Verify account verification error status code
+  Scenario: User is not able to resend email for account verification, if the email is invalid
+    Then Resend invalid email for verification
+    Then Status code should be 400
+    Then Validate error message
+    Then Delete the user
 
-    Examples:
-      | user |
-      | null |
-      | -1   |
-      | 1v   |
-      | #*   |
+  Scenario: Verify the created user's email
+    Then Verify email
+    And Verify account verification success status code
+    Then Delete the user
+
+  Scenario: Verify the created user's email is not possible when the token is invalid
+    Then Verify email with invalid token
+    Then Status code should be 400
+    Then Validate error message about invalid token
+    Then Delete the user
+
+  Scenario: Verify the created user's email is not possible when the verification token is expired
+    Then Verify email when the verification token is expired
+    Then Status code should be 400
+    Then Validate error message about invalid token
+    Then Delete the user
