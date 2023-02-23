@@ -133,7 +133,7 @@ public class RequestsUtils {
                 .build();
     }
 
-    public static void put(String endpoint, String body){
+    public static void put(String endpoint, String body) {
         logger.info(endpoint);
         response = RestAssured
                 .given()
@@ -142,6 +142,20 @@ public class RequestsUtils {
                 .body(body)
                 .when()
                 .put(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
+
+    public static void post(String endpoint, Object body, Map<String, Object> pathVar) {
+        logger.info(endpoint, body);
+        response = RestAssured
+                .given()
+                .pathParams(pathVar)
+                .header("Authorization", SharedTestData.getToken())
+                .spec(getRequestSpecification())
+                .body(body)
+                .when()
+                .post(endpoint)
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }

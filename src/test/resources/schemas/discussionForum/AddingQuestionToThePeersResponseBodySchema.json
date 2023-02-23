@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "text": {
+      "type": "string"
+    },
+    "userDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "professionName": {
+          "type": ["string",null]
+        },
+        "companyName": {
+          "type": ["string",null]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "surname",
+        "email",
+        "professionName",
+        "companyName"
+      ]
+    },
+    "courseDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "difficulty": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "rating",
+        "difficulty",
+        "keywords"
+      ]
+    },
+    "createdDate": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "text",
+    "userDto",
+    "courseDto",
+    "createdDate"
+  ]
+}

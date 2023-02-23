@@ -25,7 +25,6 @@ Feature: API test for Open School: category-controller
 
   Scenario: Create new SubCategory
     When Login by valid "adminEmail" email and "adminPsd" password
-    When Create parentCategory with provided file
     When Create subCategory
     Then Status code should be 201
     Then Validate subcategory creation response JsonSchema
