@@ -55,15 +55,15 @@ Feature: API test for Open School: mentor-controller
     Then Status code should be 200
 
     Examples:
-      | name      |
-      | "Brenden" |
-      | "brenden" |
-      | "Bre"     |
-      | "Daniels" |
-      | "daniels" |
-      | "Kel"     |
-      | "Morales" |
-      | "morales" |
+      | name            |
+      | "Mentor"        |
+      | "Ment"          |
+      | "M"             |
+      | "AnotherMentor" |
+      | "Anoth"         |
+      | "Mentoryan"     |
+      | "surname"       |
+      | "A"             |
 
   Scenario Outline: Find mentors by non-existent name
     When Get mentors by <name>

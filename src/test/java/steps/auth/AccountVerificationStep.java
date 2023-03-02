@@ -96,7 +96,7 @@ public class AccountVerificationStep {
         logger.info("The token is -> {}", token);
         queryParam.put("token", token);
         String body = BodyProvider.getBody("token", queryParam);
-        TimeUnit.MINUTES.sleep(4);
+        TimeUnit.SECONDS.sleep(180);
         RequestsUtils.post(Endpoints.VERIFY_EMAIL.url, body);
     }
 
@@ -111,5 +111,18 @@ public class AccountVerificationStep {
         RequestsUtils.post(Endpoints.SIGN_UP.url, userRegistrationDto);
         SharedTestData.setUserId(ResponseUtils.getIntFromResponse("userId"));
         logger.info("The user is prepared");
+    }
+
+    @Then("Resend email to the verified user")
+    public void resendEmailToTheVerifiedUser() {
+        String email = TestDataProvider.getPropertyValue("email");
+        logger.info("The already verified email is -> {}", email);
+        queryParam.put("email", email);
+        RequestsUtils.getByQueryParams(Endpoints.RESEND_TO_EMAIL_VERIFICATION.url, queryParam);
+    }
+
+    @And("Validate error message that this email is already verified")
+    public void validateErrorMessageThatThisEmailIsAlreadyVerified() {
+        Assertions.assertThat(ResponseUtils.getStringFromResponse("message")).isEqualTo("User already verified.");
     }
 }

@@ -24,6 +24,8 @@ public final class SharedTestData {
 
     private static String faqsAnswer;
 
+    private static String categorytitle;
+
     public static int getSubCategoryId() {
         return subCategoryId;
     }
@@ -102,5 +104,13 @@ public final class SharedTestData {
 
     public static void setCourseId(int courseId) {
         SharedTestData.courseId = courseId;
+    }
+
+    public static String getCategorytitle() {
+        return categorytitle;
+    }
+
+    public static void setCategorytitle(String categorytitle) {
+        SharedTestData.categorytitle = categorytitle;
     }
 }

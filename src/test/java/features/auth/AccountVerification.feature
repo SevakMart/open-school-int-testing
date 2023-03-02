@@ -33,3 +33,10 @@ Feature: API test for Open School account verification functionality
     Then Status code should be 400
     Then Validate error message about invalid token
     Then Delete the user
+
+  Scenario: After verification the user isn't able to resend email for account verification
+    Then Verify email
+    Then Resend email to the verified user
+    Then Status code should be 400
+    And Validate error message that this email is already verified
+    Then Delete the user

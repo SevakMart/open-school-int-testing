@@ -9,7 +9,8 @@ public enum Endpoints {
     SIGN_UP("auth/register"),
     SEND_TO_EMAIL_FOR_VERIFICATION("auth/account/verification"),
     RESEND_TO_EMAIL_VERIFICATION("auth/account/verification/resend"),
-    VERIFY_EMAIL("auth/account");
+    VERIFY_EMAIL("auth/account"),
+    CREATE_CATEGORY("categories");
 
     public final String url;
 

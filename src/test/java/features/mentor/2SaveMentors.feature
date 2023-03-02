@@ -49,13 +49,12 @@ Feature: API test for Open School: user-mentor-controller
     Then Validate the count of mentors by name from response
     Examples:
       | name        |
-      | "Arevik"    |
-      | "arevik"    |
-      | "vik"       |
-      | "Arakelyan" |
-      | "Mentor"   |
-      | "mentoryan"   |
-      | "ment"       |
+      | "Mentor"    |
+      | "Mentoryan" |
+      | "tor"       |
+      | "Me"        |
+      | "mentoryan" |
+      | "ment"      |
 
   Scenario Outline: Search saved mentors by invalid names
     Then Get authorized user's id
@@ -65,7 +64,6 @@ Feature: API test for Open School: user-mentor-controller
     Then Validate if the response body contains all saved mentors
     Examples:
       | name       |
-      | " "        |
       | "     "    |
       | "ddsdfsd " |
       | "-1 "      |

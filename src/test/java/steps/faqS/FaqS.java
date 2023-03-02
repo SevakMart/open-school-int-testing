@@ -126,7 +126,7 @@ public class FaqS {
     @And("Create FAQs which answer has {int}")
     public void createFAQsWhichAnswerHas(int symbolsCount) {
         params.put("question", "Question" + RandomStringUtils.randomAlphabetic(3));
-        params.put("answer", "Answer " + RandomStringUtils.randomAlphabetic(symbolsCount));
+        params.put("answer", RandomStringUtils.randomAlphabetic(symbolsCount));
         logger.info("The symbolsSize is -> {}", symbolsCount);
         params.put("courseId", TestDataProvider.getPropertyValue("courseIdForAddingFAQs"));
         body = BodyProvider.getBody("faqS", params);
