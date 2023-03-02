@@ -24,7 +24,7 @@ public class AuthManager {
 
     public String getTokenForVerify(int userId) {
         try (final Connection connection = DBConnectionProvider.getInstance().getConnection()) {
-            statement = connection.prepareStatement("SELECT token FROM open_school_db.verification_token WHERE id=?;");
+            statement = connection.prepareStatement("SELECT token FROM open_school_db.verification_token WHERE user_id=?;");
             statement.setInt(1, userId);
             resultSet = statement.executeQuery();
             resultSet.next();

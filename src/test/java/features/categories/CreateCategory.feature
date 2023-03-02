@@ -10,6 +10,7 @@ Feature: API test for Open School: category-controller
     When Create parentCategory with provided file
     Then Status code should be 201
     Then Validate response by JsonSchema
+    Then Delete parentCategory from DB
 
   Scenario: New category creation is not possible without attaching an image
     When Login by valid "adminEmail" email and "adminPsd" password
@@ -29,6 +30,8 @@ Feature: API test for Open School: category-controller
     When Create subCategory
     Then Status code should be 201
     Then Validate subcategory creation response JsonSchema
+    Then Delete category by Id
+    Then Delete parentCategory from DB
 
   Scenario: Create new category without admin role
     When Login by valid "userEmail" email and "userPsd" password
@@ -37,6 +40,10 @@ Feature: API test for Open School: category-controller
 
   Scenario: Creation subCategory which is a parentCategory for another category is not possible
     When Login by valid "adminEmail" email and "adminPsd" password
+    When Create parentCategory with provided file
+    When Create subCategory
     Then Create subcategory whose parentCategory is subCategory for another category
     Then Status code should be 400
     Then Validate response message of nested category creation's fail
+    Then Delete category by Id
+    Then Delete parentCategory from DB

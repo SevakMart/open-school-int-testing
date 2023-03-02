@@ -25,6 +25,7 @@ Feature: API test for Open School: category-controller
     Then Find category or subcategory by id
     Then Status code should be 200
     Then Validate categoryid success response values
+    Then Delete parentCategory from DB
 
   Scenario: Find all parent categories
     When Login by valid "adminEmail" email and "adminPsd" password

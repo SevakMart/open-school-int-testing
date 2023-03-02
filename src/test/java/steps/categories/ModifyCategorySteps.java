@@ -1,5 +1,6 @@
 package steps.categories;
 
+import pojo.Category;
 import providers.bodyProviders.BodyProvider;
 import providers.dataProviders.TestDataProvider;
 import io.cucumber.java.en.Then;
@@ -17,9 +18,9 @@ public class ModifyCategorySteps {
 
     @Then("Modify subcategory by title")
     public void modifySubcategoryByTitle() {
-        String subCategoryId = TestDataProvider.getPropertyValue("subCategoryId");
+        int subCategoryId = SharedTestData.getSubCategoryId();
         params.put("title", "Modified" + RandomStringUtils.randomAlphabetic(3));
-        params.put("parentCategoryId", TestDataProvider.getPropertyValue("parentCategoryId"));
+        params.put("parentCategoryId", SharedTestData.getCategoryId());
         String body = BodyProvider.getBody("categoryModify", params);
         RequestsUtils.patchCategoryByTitle("categories/{id}", body, subCategoryId);
     }
@@ -28,7 +29,7 @@ public class ModifyCategorySteps {
     public void modifyParentCategoryByTitle() {
         params.put("title", "Modified" + RandomStringUtils.randomAlphabetic(3));
         String body = BodyProvider.getBody("categoryModifyWithoutId", params);
-        RequestsUtils.patchCategoryByTitle("categories/{id}", body, TestDataProvider.getPropertyValue("parentCategoryId"));
+        RequestsUtils.patchCategoryByTitle("categories/{id}", body, SharedTestData.getCategoryId());
     }
 
     @Then("Modify category or subcategory by image")
@@ -50,9 +51,9 @@ public class ModifyCategorySteps {
     @Then("Modify category or subcategory by invalid category id")
     public void modifyCategoryOrSubcategoryByInvalidCategoryId() {
         params.put("title", "Modified" + RandomStringUtils.randomAlphabetic(3));
-        params.put("parentCategoryId", TestDataProvider.getPropertyValue("parentCategoryId"));
+        params.put("parentCategoryId", SharedTestData.getCategoryId());
         String body = BodyProvider.getBody("categoryModify", params);
-        RequestsUtils.patchCategoryByTitle("categories/{id}", body, "-1");
+        RequestsUtils.patchCategoryByTitle("categories/{id}", body, -1);
     }
 
     @Then("Validate error message about invalid category")
@@ -66,21 +67,22 @@ public class ModifyCategorySteps {
         params.put("title", "Modified" + RandomStringUtils.randomAlphabetic(3));
         params.put("parentCategoryId", "-1");
         String body = BodyProvider.getBody("categoryModify", params);
-        RequestsUtils.patchCategoryByTitle("categories/{id}", body, TestDataProvider.getPropertyValue("subCategoryId"));
+        RequestsUtils.patchCategoryByTitle("categories/{id}", body, SharedTestData.getSubCategoryId());
     }
 
     @Then("Modify category or subcategory by invalid title")
     public void modifyCategoryOrSubcategoryByInvalidTitle() {
         params.put("title", "");
         String body = BodyProvider.getBody("categoryModifyWithoutId", params);
-        RequestsUtils.patchCategoryByTitle("categories/{id}", body, TestDataProvider.getPropertyValue("subCategoryId"));
+        RequestsUtils.patchCategoryByTitle("categories/{id}", body, SharedTestData.getCategoryId());
     }
 
     @Then("Modify category or subcategory by existing title")
     public void modifyCategoryOrSubcategoryByExistingTitle() {
-        params.put("title", TestDataProvider.getPropertyValue("categoryTitle"));
+        SharedTestData.setCategorytitle(ResponseUtils.getObjectFromResponse("", Category.class).getTitle());
+        params.put("title", SharedTestData.getCategorytitle());
         String body = BodyProvider.getBody("categoryModifyWithoutId", params);
-        RequestsUtils.patchCategoryByTitle("categories/{id}", body, TestDataProvider.getPropertyValue("subCategoryId"));
+        RequestsUtils.patchCategoryByTitle("categories/{id}", body, SharedTestData.getCategoryId());
     }
 
     @Then("Validate error message about existing title")

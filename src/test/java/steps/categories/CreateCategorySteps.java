@@ -1,5 +1,7 @@
 package steps.categories;
 
+import manager.CategoryManager;
+import providers.dataProviders.Endpoints;
 import providers.dataProviders.TestDataProvider;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,10 +19,12 @@ public class CreateCategorySteps {
 
     private Map<String, Object> body = new HashMap<>();
 
+    private CategoryManager categoryManager = new CategoryManager();
+
     @When("Create parentCategory with provided file")
     public void createParentCategoryWithProvidedFile() {
         body.put("title", "TestParent " + RandomStringUtils.randomAlphabetic(5));
-        RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
+        RequestsUtils.multipartPost(Endpoints.CREATE_CATEGORY.url, body, TestDataProvider.getPropertyValue("filePath"));
         SharedTestData.setCategoryId(ResponseUtils.getObjectFromResponse("", Category.class).getId());
     }
 
@@ -28,8 +32,8 @@ public class CreateCategorySteps {
     public void createSubCategory() {
         String parentCategoryId = String.valueOf(SharedTestData.getCategoryId());
         body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(3));
-        body.put("parentCategoryId", parentCategoryId);
-        RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
+        body.put("parentCategoryId", SharedTestData.getCategoryId());
+        RequestsUtils.multipartPost(Endpoints.CREATE_CATEGORY.url, body, TestDataProvider.getPropertyValue("filePath"));
         SharedTestData.setSubCategoryId(ResponseUtils.getObjectFromResponse("", Category.class).getId());
     }
 
@@ -45,12 +49,12 @@ public class CreateCategorySteps {
 
     @When("Invalid filePath during parentCategory creation")
     public void invalidFilePathDuringParentCategoryCreation() {
-        RequestsUtils.multipartPost("categories", "title", "FailTitle");
+        RequestsUtils.multipartPost(Endpoints.CREATE_CATEGORY.url, "title", "FailTitle");
     }
 
     @When("Invalid title during parentCategory creation")
     public void invalidTitleDuringParentCategoryCreation() {
-        RequestsUtils.multipartPost("categories", "title", "");
+        RequestsUtils.multipartPost(Endpoints.CREATE_CATEGORY.url, "title", "");
     }
 
     @Then("Validate new category creation without image failure response message")
@@ -68,19 +72,25 @@ public class CreateCategorySteps {
     @When("Fail parentCategory creatiion without admin role")
     public void failParentCategoryCreatiionWithoutAdminRole() {
         body.put("title", RandomStringUtils.randomAlphabetic(3));
-        RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
+        RequestsUtils.multipartPost(Endpoints.CREATE_CATEGORY.url, body, TestDataProvider.getPropertyValue("filePath"));
     }
 
     @Then("Create subcategory whose parentCategory is subCategory for another category")
     public void createSubcategoryWhoseParentCategoryIsSubCategoryForAnotherCategory() {
         body.put("title", "TestSub " + RandomStringUtils.randomAlphabetic(3));
         body.put("parentCategoryId", SharedTestData.getSubCategoryId());
-        RequestsUtils.multipartPost("categories", body, TestDataProvider.getPropertyValue("filePath"));
+        RequestsUtils.multipartPost(Endpoints.CREATE_CATEGORY.url, body, TestDataProvider.getPropertyValue("filePath"));
     }
 
     @Then("Validate response message of nested category creation's fail")
     public void validateResponseMessageOfNestedCategoryCreationSFail() {
         String message = "The parent category cannot be a subcategory for another category.";
         Assertions.assertThat(ResponseUtils.getStringFromResponse("message")).isEqualTo(message);
+    }
+
+    @Then("Delete parentCategory from DB")
+    public void deleteParentCategoryFromDB() {
+        int id = SharedTestData.getCategoryId();
+        categoryManager.deleteUserById(id);
     }
 }
