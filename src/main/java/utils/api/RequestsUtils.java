@@ -145,4 +145,15 @@ public class RequestsUtils {
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }
+
+    public static void delete(String endpoint, Map<String,Object> pathvar) {
+        response = RestAssured
+                .given()
+                .header("Authorization", SharedTestData.getToken())
+                .pathParams(pathvar)
+                .when()
+                .delete(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
 }
