@@ -25,7 +25,7 @@ public class FaqS {
     public void createFAQs() {
         params.put("question", "Question" + RandomStringUtils.randomAlphabetic(3));
         params.put("answer", "Answer" + RandomStringUtils.randomAlphabetic(3));
-        params.put("courseId", TestDataProvider.getPropertyValue("courseIdForAddingFAQs"));
+        params.put("courseId",SharedTestData.getCourseId());
         body = BodyProvider.getBody("faqS", params);
         RequestsUtils.post("courses/faqs", body);
         SharedTestData.setFaqsId(ResponseUtils.getIntFromResponse("id"));
@@ -128,7 +128,7 @@ public class FaqS {
         params.put("question", "Question" + RandomStringUtils.randomAlphabetic(3));
         params.put("answer", RandomStringUtils.randomAlphabetic(symbolsCount));
         logger.info("The symbolsSize is -> {}", symbolsCount);
-        params.put("courseId", TestDataProvider.getPropertyValue("courseIdForAddingFAQs"));
+        params.put("courseId", SharedTestData.getCourseId());
         body = BodyProvider.getBody("faqS", params);
         logger.info("Body is {}", body);
         RequestsUtils.post("courses/faqs", body);

@@ -10,7 +10,10 @@ public enum Endpoints {
     SEND_TO_EMAIL_FOR_VERIFICATION("auth/account/verification"),
     RESEND_TO_EMAIL_VERIFICATION("auth/account/verification/resend"),
     VERIFY_EMAIL("auth/account"),
-    CREATE_CATEGORY("categories");
+    CREATE_CATEGORY("categories"),
+    CREATE_COURSE("courses"),
+    GET_ALL_PARENT_CATEGORIES("categories/parentCategories"),
+    DELETE_COURSE("courses/{id}");
 
     public final String url;
 
