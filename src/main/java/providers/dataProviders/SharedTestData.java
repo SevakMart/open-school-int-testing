@@ -26,6 +26,16 @@ public final class SharedTestData {
 
     private static String categorytitle;
 
+    private static int EnrolledCourseId;
+
+    public static int getEnrolledCourseId() {
+        return EnrolledCourseId;
+    }
+
+    public static void setEnrolledCourseId(int enrolledCourseId) {
+        EnrolledCourseId = enrolledCourseId;
+    }
+
     public static int getSubCategoryId() {
         return subCategoryId;
     }
