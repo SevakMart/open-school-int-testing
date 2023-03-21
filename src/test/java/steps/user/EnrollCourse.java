@@ -1,3 +1,4 @@
+package steps.user;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -20,7 +21,7 @@ public class EnrollCourse {
     @Then("Enroll course for the user")
     public void enrollCourseForTheUser() {
         RequestsUtils.get("courses", SharedTestData.getToken());
-        int courseId = ResponseUtils.getIntFromResponse("content[0].id");
+        int courseId = ResponseUtils.getIntFromResponse("content[4].id");
         SharedTestData.setCourseId(courseId);
         logger.info("The course Id is {}", courseId);
         pathVar.put("userId", SharedTestData.getUserId());
@@ -37,7 +38,7 @@ public class EnrollCourse {
     @Then("Delete enrolled course")
     public void deleteEnrolledCourse() {
         DeleteManager courseManager = new DeleteManager();
-        courseManager.deleteCourse(SharedTestData.getEnrolledCourseId());
+        courseManager.deleteEnrolledCourse(SharedTestData.getEnrolledCourseId());
     }
 
     @Then("Get just enrolled courseId")
@@ -67,4 +68,3 @@ public class EnrollCourse {
         RequestsUtils.post(Endpoints.ENROLL_COURSE.url, "", pathVar);
     }
 }
-

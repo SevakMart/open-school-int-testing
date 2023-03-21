@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DeleteManager {
     PreparedStatement statement;
-    public void deleteCourse(int enrolledCourseId) {
+    public void deleteEnrolledCourse(int enrolledCourseId) {
 
         try (final Connection connection = DBConnectionProvider.getInstance().getConnection()) {
             statement = connection.prepareStatement("DELETE FROM `enrolled_learning_path` WHERE id=?");
@@ -21,7 +21,7 @@ public class DeleteManager {
 
     public void deleteQuestionToThePeers(int questionId) {
         try (final Connection connection = DBConnectionProvider.getInstance().getConnection()) {
-            statement = connection.prepareStatement("DELETE FROM `enrolled_learning_path` WHERE id=?");
+            statement = connection.prepareStatement("DELETE FROM `peers_question` WHERE id=?");
             statement.setInt(1, questionId);
             statement.executeUpdate();
         } catch (SQLException e) {

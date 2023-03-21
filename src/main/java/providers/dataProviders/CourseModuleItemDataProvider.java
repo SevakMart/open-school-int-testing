@@ -10,7 +10,7 @@ public class CourseModuleItemDataProvider {
              int moduleItemTypeId=1;
              String link=RandomStringUtils.randomAlphabetic(3);
              int estimatedTime = 100;
-             int modulId=1;
-            return new CourseModuleItemDto(title,moduleItemTypeId,link,estimatedTime,modulId);
+             int moduleId=1;
+            return new CourseModuleItemDto(title,moduleItemTypeId,link,estimatedTime,moduleId);
         }
     }
