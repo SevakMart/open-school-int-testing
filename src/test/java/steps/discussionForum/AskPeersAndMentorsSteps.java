@@ -22,9 +22,8 @@ public class AskPeersAndMentorsSteps {
 
     private final Map<String, Object> pathVariables = new HashMap<>();
 
-    String text;
-    String body;
-
+    private String text;
+    private String body;
 
     private final static Logger logger = LoggerFactory.getLogger(RequestsUtils.class);
 
@@ -60,7 +59,7 @@ public class AskPeersAndMentorsSteps {
         logger.info("The question for peers is -> {}", text);
         pathVariables.put("enrolledCourseId", 0);
         body = BodyProvider.getBody("questionToPeers", params);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body,pathVariables);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body, pathVariables);
     }
 
     @And("Create question where the user has up to {int} symbols")
@@ -68,7 +67,7 @@ public class AskPeersAndMentorsSteps {
         text = RandomStringUtils.randomAlphabetic(symbolsCount);
         logger.info("The question for peers is -> {}", text);
         params.put("text", text);
-        String body = BodyProvider.getBody("questionToPeers", params);
+        body = BodyProvider.getBody("questionToPeers", params);
         int enrolledCourseId = SharedTestData.getEnrolledCourseId();
         pathVariables.put("enrolledCourseId", enrolledCourseId);
         logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
@@ -102,7 +101,7 @@ public class AskPeersAndMentorsSteps {
         logger.info("The question for peers is -> {}", text);
         pathVariables.put("enrolledCourseId", 3);
         body = BodyProvider.getBody("questionToPeers", params);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body,pathVariables);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body, pathVariables);
     }
 
     @Then("Validate error message about question length")
@@ -114,4 +113,3 @@ public class AskPeersAndMentorsSteps {
         Assertions.assertThat(actualResponseMessage).isEqualTo(expectedResponseMessage);
     }
 }
-

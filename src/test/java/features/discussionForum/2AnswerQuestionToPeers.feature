@@ -29,3 +29,29 @@ Feature: API test for Open School: course-controller
     Then Status code should be 403
     And Validate error message when course is not enrolled
     Then Delete the question to the peers
+
+  Scenario Outline: Validate that the questions to the peers should have up to 5oo symbols including spaces
+    Then Enroll course for the user
+    When Find users enrolled courses by course status
+    And Create questions for the specified course
+    When Create answer where the user has up to <symbolsCount> symbols
+    Then Status code should be 201
+    And Validate the answer response body by json schema
+    Then Delete the question to the peers
+    Examples:
+      | symbolsCount |
+      | 499          |
+      | 500          |
+
+  Scenario Outline: Creating answer to the peers question with the symbols greater than 500 is not possible
+    Then Enroll course for the user
+    When Find users enrolled courses by course status
+    And Create questions for the specified course
+    When Create answer where the user has up to <symbolsCount> symbols
+    Then Status code should be 400
+    Then Validate error message about question length
+    Then Delete the question to the peers
+    Examples:
+      | symbolsCount |
+      | 501         |
+      | 502          |
