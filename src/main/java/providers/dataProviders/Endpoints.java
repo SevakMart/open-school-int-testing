@@ -13,7 +13,7 @@ public enum Endpoints {
     CREATE_CATEGORY("categories"),
     CREATE_COURSE("courses"),
     GET_ALL_PARENT_CATEGORIES("categories/parentCategories"),
-    DELETE_COURSE("courses/{id}"),
+    DELETE_COURSE("courses/{id}"),git
     FIND_USERS_ENROLLED_COURSES("users/{userId}/courses/enrolled");
 
     public final String url;
