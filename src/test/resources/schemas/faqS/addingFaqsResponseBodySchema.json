@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "courseDto": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "goal": {
+          "type": "string"
+        },
+        "modules": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "moduleItemSet": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "moduleItemType": {
+                          "type": "string"
+                        },
+                        "link": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "moduleItemType",
+                        "link"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "title",
+                "description",
+                "moduleItemSet"
+              ]
+            }
+          ]
+        },
+        "mentorDto": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "surname": {
+              "type": "string"
+            },
+            "userImgPath": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "linkedinPath": {
+              "type":[
+                "string",
+                "null"
+              ]
+            },
+            "companyName": {
+              "type":[
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "surname",
+            "userImgPath",
+            "linkedinPath",
+            "companyName"
+          ]
+        },
+        "rating": {
+          "type": "number"
+        },
+        "enrolled": {
+          "type": "integer"
+        },
+        "level": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "goal",
+        "modules",
+        "mentorDto",
+        "rating",
+        "enrolled",
+        "level",
+        "language",
+        "duration"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "question",
+    "answer",
+    "courseDto"
+  ]
+}
