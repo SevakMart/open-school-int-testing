@@ -57,7 +57,7 @@ public class RequestsUtils {
         response = RestAssured
                 .given()
                 .header("Authorization", SharedTestData.getToken())
-                .spec(getRequestSpecification())
+               .spec(getRequestSpecification())
                 .body(body)
                 .when()
                 .post(endpoint)
@@ -133,7 +133,7 @@ public class RequestsUtils {
                 .build();
     }
 
-    public static void put(String endpoint, String body){
+    public static void put(String endpoint, String body) {
         logger.info(endpoint);
         response = RestAssured
                 .given()
@@ -146,13 +146,38 @@ public class RequestsUtils {
         logger.info(response.extract().body().asPrettyString());
     }
 
-    public static void delete(String endpoint, Map<String,Object> pathvar) {
+    public static void delete(String endpoint, Map<String, Object> pathvar) {
         response = RestAssured
                 .given()
                 .header("Authorization", SharedTestData.getToken())
                 .pathParams(pathvar)
                 .when()
                 .delete(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
+
+    public static void post(String endpoint, Object body, Map<String, Object> pathvar) {
+        response = RestAssured
+                .given()
+                .pathParams(pathvar)
+                .header("Authorization", SharedTestData.getToken())
+                .spec(getRequestSpecification())
+                .body(body)
+                .when()
+                .post(endpoint)
+                .then();
+        logger.info(endpoint, body);
+        logger.info(response.extract().body().asPrettyString());
+    }
+
+    public static void get(String endpoint, String token, Map<String, Object> pathVar) {
+        response = RestAssured
+                .given()
+                .pathParams(pathVar)
+                .header("Authorization", token)
+                .when()
+                .get(endpoint)
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }

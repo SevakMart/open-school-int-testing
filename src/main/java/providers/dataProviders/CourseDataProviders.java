@@ -20,9 +20,9 @@ public class CourseDataProviders {
         String goal = RandomStringUtils.randomAlphabetic(4);
         RequestsUtils.get(Endpoints.GET_ALL_PARENT_CATEGORIES.url, SharedTestData.getToken());
         int categoryId = ResponseUtils.getIntFromResponse("content[0].id");
-        int difficultyId=2;
-        int languageId=2;
-        keywordIds.add(2);
+        int difficultyId=7;
+        int languageId=4;
+        keywordIds.add(3);
         createModule.add(CourseModuleDataProvider.createCourseModule());
         return new CourseDto(description,title,goal,categoryId,difficultyId,languageId,keywordIds,createModule);
     }

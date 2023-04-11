@@ -20,11 +20,29 @@ public final class SharedTestData {
 
     private static int faqsId;
 
-    private static String faqsQuestion;
-
-    private static String faqsAnswer;
-
     private static String categorytitle;
+
+    private static int enrolledCourseId;
+
+    private static int questionIdToThePeers;
+
+    private static int answerIdToThePeers;
+
+    public static int getEnrolledCourseId() {
+        return enrolledCourseId;
+    }
+
+    public static void setEnrolledCourseId(int enrolledCourseId) {
+        SharedTestData.enrolledCourseId = enrolledCourseId;
+    }
+
+    public static int getQuestionIdToThePeers() {
+        return questionIdToThePeers;
+    }
+
+    public static void setQuestionIdToThePeers(int questionIdToThePeers) {
+        SharedTestData.questionIdToThePeers = questionIdToThePeers;
+    }
 
     public static int getSubCategoryId() {
         return subCategoryId;
@@ -82,22 +100,6 @@ public final class SharedTestData {
         SharedTestData.faqsId = faqsId;
     }
 
-    public static void setFaqsQuestion(String faqsQuestion) {
-        SharedTestData.faqsQuestion = faqsQuestion;
-    }
-
-    public static String getFaqsQuestion() {
-        return faqsQuestion;
-    }
-
-    public static String getFaqsAnswer() {
-        return faqsAnswer;
-    }
-
-    public static void setFaqsAnswer(String faqsAnswer) {
-        SharedTestData.faqsAnswer = faqsAnswer;
-    }
-
     public static int getCourseId() {
         return courseId;
     }
@@ -112,5 +114,13 @@ public final class SharedTestData {
 
     public static void setCategorytitle(String categorytitle) {
         SharedTestData.categorytitle = categorytitle;
+    }
+
+    public static int getAnswerIdToThePeers() {
+        return answerIdToThePeers;
+    }
+
+    public static void setAnswerIdToThePeers(int answerIdToThePeers) {
+        SharedTestData.answerIdToThePeers = answerIdToThePeers;
     }
 }
