@@ -1,4 +1,0 @@
-{
-  "question": "${question}",
-  "answer": "${answer}"
-}
