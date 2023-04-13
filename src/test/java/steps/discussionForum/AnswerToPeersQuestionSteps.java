@@ -9,17 +9,14 @@ import org.slf4j.LoggerFactory;
 import providers.bodyProviders.BodyProvider;
 import providers.dataProviders.Endpoints;
 import providers.dataProviders.SharedTestData;
+import steps.BaseSteps;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnswerToPeersQuestionSteps {
-
-    private final Map<String, Object> params = new HashMap<>();
-
-    private final Map<String, Object> pathVariables = new HashMap<>();
+public class AnswerToPeersQuestionSteps extends BaseSteps {
 
     private String text;
     private String body;

@@ -10,22 +10,17 @@ import org.slf4j.LoggerFactory;
 import providers.bodyProviders.BodyProvider;
 import providers.dataProviders.Endpoints;
 import providers.dataProviders.SharedTestData;
+import steps.BaseSteps;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AskPeersAndMentorsSteps {
-
-    private final Map<String, Object> params = new HashMap<>();
-
-    private final Map<String, Object> pathVariables = new HashMap<>();
+public class AskPeersAndMentorsSteps extends BaseSteps {
 
     private String text;
     private String body;
-
-    private final static Logger logger = LoggerFactory.getLogger(RequestsUtils.class);
 
     @And("Create questions for the specified course")
     public void createQuestionsForTheSpecifiedCourse() {
@@ -36,7 +31,7 @@ public class AskPeersAndMentorsSteps {
         int enrolledCourseId = SharedTestData.getEnrolledCourseId();
         pathVariables.put("enrolledCourseId", enrolledCourseId);
         logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body, pathVariables);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_PEERS.url, body, pathVariables);
         SharedTestData.setQuestionIdToThePeers(ResponseUtils.getIntFromResponse("id"));
     }
 
@@ -59,7 +54,7 @@ public class AskPeersAndMentorsSteps {
         logger.info("The question for peers is -> {}", text);
         pathVariables.put("enrolledCourseId", 0);
         body = BodyProvider.getBody("questionToPeers", params);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body, pathVariables);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_PEERS.url, body, pathVariables);
     }
 
     @And("Create question where the user has up to {int} symbols")
@@ -71,7 +66,7 @@ public class AskPeersAndMentorsSteps {
         int enrolledCourseId = SharedTestData.getEnrolledCourseId();
         pathVariables.put("enrolledCourseId", enrolledCourseId);
         logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body, pathVariables);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_PEERS.url, body, pathVariables);
     }
 
     @And("Creation questions for the mentor with invalid course")
@@ -82,7 +77,7 @@ public class AskPeersAndMentorsSteps {
         params.put("courseId", 0);
         logger.info("The enrolled courseId is -> {}", 0);
         body = BodyProvider.getBody("", params);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_PEERS.url, body);
     }
 
     @And("Validate error message when course is not enrolled")
@@ -101,7 +96,7 @@ public class AskPeersAndMentorsSteps {
         logger.info("The question for peers is -> {}", text);
         pathVariables.put("enrolledCourseId", 3);
         body = BodyProvider.getBody("questionToPeers", params);
-        RequestsUtils.post(Endpoints.ADD_QUESTIONS.url, body, pathVariables);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_PEERS.url, body, pathVariables);
     }
 
     @Then("Validate error message about question length")
@@ -111,5 +106,10 @@ public class AskPeersAndMentorsSteps {
         String expectedResponseMessage = "Maximum 500 symbols are allowed";
         logger.info("The expected response message is -> {}", expectedResponseMessage);
         Assertions.assertThat(actualResponseMessage).isEqualTo(expectedResponseMessage);
+    }
+
+    @Then("Get peersQuestionId")
+    public void getPeersQuestionId() {
+        SharedTestData.setQuestionIdToThePeers(ResponseUtils.getIntFromResponse("id"));
     }
 }

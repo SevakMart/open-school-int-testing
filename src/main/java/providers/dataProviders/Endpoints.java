@@ -2,7 +2,7 @@ package providers.dataProviders;
 
 public enum Endpoints {
 
-    ADD_QUESTIONS("courses/enrolled/{enrolledCourseId}/peers-questions"),
+    ADD_QUESTIONS_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions"),
     ADD_ANSWER_FOR_THE_PEERS_QUESTION("courses/enrolled/{enrolledCourseId}/peers-answers"),
     ADD_QUESTIONS_TO_THE_MENTOR("/courses/mentor-questions"),
     ENROLL_COURSE("users/{userId}/courses/{courseId}"),
@@ -13,8 +13,10 @@ public enum Endpoints {
     CREATE_CATEGORY("categories"),
     CREATE_COURSE("courses"),
     GET_ALL_PARENT_CATEGORIES("categories/parentCategories"),
-    DELETE_COURSE("courses/{id}"),git
-    FIND_USERS_ENROLLED_COURSES("users/{userId}/courses/enrolled");
+    DELETE_COURSE("courses/{id}"),
+    FIND_USERS_ENROLLED_COURSES("users/{userId}/courses/enrolled"),
+    EDIT_QUESTIONS_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions/{peersQuestionId}"),
+    DELETE_QUESTION_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions/{peersQuestionId}");
 
     public final String url;
 
