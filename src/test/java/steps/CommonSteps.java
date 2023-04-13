@@ -9,6 +9,9 @@ import org.assertj.core.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CommonSteps {
 
     private static final String BASE_URL = "http://open-school-dev.eu-central-1.elasticbeanstalk.com/";

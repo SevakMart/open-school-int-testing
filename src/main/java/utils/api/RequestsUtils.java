@@ -181,4 +181,18 @@ public class RequestsUtils {
                 .then();
         logger.info(response.extract().body().asPrettyString());
     }
+
+    public static void put(String endpoint, String body, Map<String, Object> pathVar) {
+        logger.info(endpoint);
+        response = RestAssured
+                .given()
+                .pathParams(pathVar)
+                .header("Authorization", SharedTestData.getToken())
+                .spec(getRequestSpecification())
+                .body(body)
+                .when()
+                .put(endpoint)
+                .then();
+        logger.info(response.extract().body().asPrettyString());
+    }
 }

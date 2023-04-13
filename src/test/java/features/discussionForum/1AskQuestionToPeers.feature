@@ -1,5 +1,5 @@
 Feature: API test for Open School: course-controller
-  Description: The purpose of these tests is to cover all flows connected with adding questions to the
+  Description: The purpose of these tests is to cover all flows connected with answering questions to the
   Open School Swagger URL: http://open-school-dev.eu-central-1.elasticbeanstalk.com/swagger-ui/index.html
 
   Background:
@@ -32,6 +32,7 @@ Feature: API test for Open School: course-controller
     Then Enroll course for the user
     When Find users enrolled courses by course status
     And Create question where the user has up to <symbolsCount> symbols
+    Then Get peersQuestionId
     Then Status code should be 201
     And Validate the response body by json schema
     Then Delete the question to the peers
@@ -52,4 +53,3 @@ Feature: API test for Open School: course-controller
       | symbolsCount |
       | 501          |
       | 502          |
-
