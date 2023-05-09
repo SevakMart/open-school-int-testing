@@ -3,7 +3,7 @@ package providers.dataProviders;
 public enum Endpoints {
 
     ADD_QUESTIONS_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions"),
-    ADD_ANSWER_FOR_THE_PEERS_QUESTION("courses/enrolled/329/peers-answers"),
+    ADD_ANSWER_FOR_THE_PEERS_QUESTION("courses/enrolled/{enrolledCourseId}/peers-answers"),
     ADD_QUESTIONS_TO_THE_MENTOR("/courses/mentor-questions"),
     ENROLL_COURSE("users/{userId}/courses/{courseId}"),
     SIGN_UP("auth/register"),
