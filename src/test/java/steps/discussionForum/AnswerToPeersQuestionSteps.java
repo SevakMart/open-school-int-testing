@@ -21,16 +21,15 @@ public class AnswerToPeersQuestionSteps extends BaseSteps {
     private String text;
     private String body;
 
-    private final static Logger logger = LoggerFactory.getLogger(RequestsUtils.class);
-
     @Then("Add answer to the peers question")
     public void addAnswerToThePeersQuestion() {
-        text = "AnswerToPeersQuestion " + RandomStringUtils.randomAlphabetic(5);
-        params.put("text", text);
+
         logger.info("The answer for the peers question is -> {}", text);
         int questionId = SharedTestData.getQuestionIdToThePeers();
         logger.info("The questionId is -> {}", questionId);
         params.put("questionId", questionId);
+        text = "AnswerToPeersQuestion " + RandomStringUtils.randomAlphabetic(5);
+        params.put("text", text);
         body = BodyProvider.getBody("answerToPeers", params);
         int enrolledCourseId = SharedTestData.getEnrolledCourseId();
         pathVariables.put("enrolledCourseId", enrolledCourseId);

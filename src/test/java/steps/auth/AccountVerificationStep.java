@@ -70,6 +70,7 @@ public class AccountVerificationStep {
     public void verifyEmail() {
         int userId = SharedTestData.getUserId();
         String token = authManager.getTokenForVerify(userId);
+        logger.info("The token is -> {}", token);
         queryParam.put("token", token);
         logger.info("The token is -> {}", token);
         String body = BodyProvider.getBody("token", queryParam);
@@ -86,7 +87,7 @@ public class AccountVerificationStep {
 
     @Then("Validate error message about invalid token")
     public void validateErrorMessageAboutInvalidToken() {
-        Assertions.assertThat(ResponseUtils.getStringFromResponse("message")).isEqualTo("Verification token is expired or not valid");
+        Assertions.assertThat(ResponseUtils.getStringFromResponse("message")).isEqualTo("Verification token is expired or not valid.");
     }
 
     @Then("Verify email when the verification token is expired")

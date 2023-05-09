@@ -1,5 +1,5 @@
 {
   "question": "${question}",
   "answer": "${answer}",
-  "courseId":"${courseId}"
+  "courseId": "${courseId}"
 }

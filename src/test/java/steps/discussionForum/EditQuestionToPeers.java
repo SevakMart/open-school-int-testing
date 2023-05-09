@@ -1,12 +1,12 @@
 package steps.discussionForum;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
 import providers.bodyProviders.BodyProvider;
 import providers.dataProviders.Endpoints;
 import providers.dataProviders.SharedTestData;
 import steps.BaseSteps;
-import steps.CommonSteps;
 import utils.api.RequestsUtils;
 
 public class EditQuestionToPeers extends BaseSteps {

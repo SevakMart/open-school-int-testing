@@ -22,11 +22,11 @@ Feature: API test for Open School account verification functionality
     And Verify account verification success status code
     Then Delete the user
 
-#  Scenario: Verify the created user's email is not possible when the token is invalid
-#    Then Verify email with invalid token
-#    Then Status code should be 403
-#    Then Validate error message about invalid token
-#    Then Delete the user
+  Scenario: Verify the created user's email is not possible when the token is invalid
+    Then Verify email with invalid token
+    Then Status code should be 400
+    Then Validate error message about invalid token
+    Then Delete the user
 
   Scenario: Verify the created user's email is not possible when the verification token is expired
     Then Verify email when the verification token is expired

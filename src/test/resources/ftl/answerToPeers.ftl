@@ -1,4 +1,4 @@
 {
-  "text": "${text}",
-  "questionId": "${questionId}"
+ "text": "${text}",
+ "questionId": ${questionId?c}
 }

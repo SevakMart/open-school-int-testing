@@ -16,7 +16,10 @@ public enum Endpoints {
     DELETE_COURSE("courses/{id}"),
     FIND_USERS_ENROLLED_COURSES("users/{userId}/courses/enrolled"),
     EDIT_QUESTIONS_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions/{peersQuestionId}"),
-    DELETE_QUESTION_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions/{peersQuestionId}");
+    DELETE_QUESTION_TO_PEERS("courses/enrolled/{enrolledCourseId}/peers-questions/{peersQuestionId}"),
+    GET_QUESTION_TO_PEERS_BY_ID("courses/enrolled/{enrolledCourseId}/peers-questions/{peersQuestionId}"),
+    GET_ANSWER_TO_PEERS_QUESTION_BY_ID("courses/enrolled/{enrolledCourseId}/peers-answers/{answerId}"),
+    GET_ALL_ANSWERS_RELATED_TO_PEERS_QUESTION("courses/enrolled/{enrolledCourseId}/peers-questions/answers/{peersQuestionId}");
 
     public final String url;
 

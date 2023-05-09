@@ -1,4 +1,4 @@
-Feature: API test for Open School: course-controller
+Feature: API test for Open School: discussion-forum-controller
   Description: The purpose of these tests is to cover all flows connected with deleting questions to the peers
   Open School Swagger URL: http://open-school-dev.eu-central-1.elasticbeanstalk.com/swagger-ui/index.html
 
