@@ -28,4 +28,14 @@ public class DeleteManager {
             throw new RuntimeException(e);
         }
     }
+
+    public void deleteQuestionToTheMentor(int questionId) {
+        try (final Connection connection = DBConnectionProvider.getInstance().getConnection()) {
+            statement = connection.prepareStatement("DELETE FROM `mentor_question` WHERE id=?");
+            statement.setInt(1, questionId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

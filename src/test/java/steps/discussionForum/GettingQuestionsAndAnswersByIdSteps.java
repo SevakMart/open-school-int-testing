@@ -91,7 +91,7 @@ public class GettingQuestionsAndAnswersByIdSteps extends BaseSteps {
         ResponseUtils.validateResponseAgainstJSONSchema("schemas/discussionForum/GetAllAnswersToPeersResponseSchema.json");
     }
 
-    @And("Validate error message about unautorized user")
+    @And("Validate error message about unauthorized user")
     public void validateErrorMessageAboutUnautorizedUser() {
         String expectedErrorMessage = MessageProvider.getPropertyValue("unauthorizedUser");
         logger.info("ExpectedErrorMessage is ----->{}",expectedErrorMessage);
@@ -109,5 +109,73 @@ public class GettingQuestionsAndAnswersByIdSteps extends BaseSteps {
         pathVariables.put("enrolledCourseId", enrolledCourseId);
         pathVariables.put("peersQuestionId", peersQuestionId);
         RequestsUtils.get(Endpoints.GET_ALL_ANSWERS_RELATED_TO_PEERS_QUESTION.url, "", pathVariables);
+    }
+
+    @When("Get question to mentor by Id")
+    public void getQuestionToMentorById() {
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        int mentorQuestionId = SharedTestData.getQuestionToTheMentor();
+        logger.info("peersQuestionId is ---->{}", mentorQuestionId);
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        pathVariables.put("questionId", mentorQuestionId);
+        RequestsUtils.get(Endpoints.GET_MENTOR_QUESTION_BY_ID.url, SharedTestData.getToken(), pathVariables);
+    }
+
+    @When("Get question to mentor by the wrong questionId")
+    public void getQuestionToMentorByTheWrongQuestionId() {
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        pathVariables.put("questionId", 0);
+        RequestsUtils.get(Endpoints.GET_MENTOR_QUESTION_BY_ID.url, SharedTestData.getToken(), pathVariables);
+    }
+
+    @When("Get question to mentor by the wrong enrolledCourseId")
+    public void getQuestionToMentorByTheWrongEnrolledCourseId() {
+        GettingIdManager gettingIdManager = new GettingIdManager();
+        int mentorQuestionIdFromDB = gettingIdManager.getFromMentorQuestionTableFirstId();
+        logger.info("EnrolledCourseId is ---->{}", 0);
+        pathVariables.put("enrolledCourseId", 0);
+        logger.info("MentorQuestionIdFromDB is ------>{}", mentorQuestionIdFromDB);
+        pathVariables.put("questionId", mentorQuestionIdFromDB);
+        RequestsUtils.get(Endpoints.GET_MENTOR_QUESTION_BY_ID.url, SharedTestData.getToken(), pathVariables);
+    }
+
+    @When("Get all questions to peers")
+    public void getAllQuestionsToPeers() {
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        RequestsUtils.get(Endpoints.GET_ALL_QUESTIONS_TO_PEERS.url, SharedTestData.getToken(), pathVariables);
+    }
+
+    @And("Validate all questions response body by json schema")
+    public void validateAllQuestionsResponseBodyByJsonSchema() {
+        ResponseUtils.validateResponseAgainstJSONSchema("schemas/discussionForum/GetAllQuestionsResponseSchema.json");
+    }
+
+    @When("Get all questions to peers without registration")
+    public void getAllQuestionsToPeersWithoutRegistration() {
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        RequestsUtils.get(Endpoints.GET_ALL_QUESTIONS_TO_PEERS.url, "", pathVariables);
+    }
+
+    @When("Get all questions to mentors")
+    public void getAllQuestionsToMentors() {
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        RequestsUtils.get(Endpoints.GET_ALL_MENTORS_QUESTION.url, SharedTestData.getToken(), pathVariables);
+    }
+
+    @When("Get all questions to mentors without registration")
+    public void getAllQuestionsToMentorsWithoutRegistration() {
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        RequestsUtils.get(Endpoints.GET_ALL_MENTORS_QUESTION.url, "", pathVariables);
     }
 }
