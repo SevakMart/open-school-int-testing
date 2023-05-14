@@ -9,9 +9,9 @@ Feature: API test for Open School: discussion-forum-controller
     Then Enroll course for the user
     When Find users enrolled courses by course status
     And Create questions for the specified course
-    Then Add answer to the peers question
 
   Scenario: Find all answers related to the provided question
+    Then Add answer to the peers question
     When Get all answers to peers
     Then Status code should be 200
     And Validate all answers response body by json schema
@@ -19,8 +19,23 @@ Feature: API test for Open School: discussion-forum-controller
     Then Delete enrolled course
 
   Scenario: Getting all answers related to the provided question without registered impossible
+    Then Add answer to the peers question
     When Get all answers to peers without registration
     Then Status code should be 401
-    And Validate error message about unautorized user
+    And Validate error message about unauthorized user
+    Then Deleting the question to the peers
+    Then Delete enrolled course
+
+  Scenario: Find all questions to peers related to the provided question
+    When Get all questions to peers
+    Then Status code should be 200
+    And Validate all questions response body by json schema
+    Then Deleting the question to the peers
+    Then Delete enrolled course
+
+  Scenario: Getting all questions to peers related to the provided question without registered impossible
+    When Get all questions to peers without registration
+    Then Status code should be 401
+    And Validate error message about unauthorized user
     Then Deleting the question to the peers
     Then Delete enrolled course

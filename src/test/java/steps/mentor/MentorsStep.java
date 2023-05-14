@@ -2,24 +2,17 @@ package steps.mentor;
 
 import io.cucumber.java.en.Then;
 import org.assertj.core.api.Assertions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pojo.Mentor;
 import providers.dataProviders.TestDataProvider;
+import steps.BaseSteps;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
 import providers.dataProviders.SharedTestData;
 import io.cucumber.java.en.When;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-
-public class MentorsStep {
-
-    private final Map<String, Object> params = new HashMap<>();
-    private final Logger logger = LoggerFactory.getLogger(MentorsStep.class);
+public class MentorsStep extends BaseSteps {
 
     @When("Get all mentors")
     public void getAllMentors() {

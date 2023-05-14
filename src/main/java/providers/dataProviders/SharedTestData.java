@@ -28,6 +28,28 @@ public final class SharedTestData {
 
     private static int answerIdToThePeers;
 
+    private static int mentorId;
+
+    public static int getQuestionToTheMentor() {
+        return questionToTheMentor;
+    }
+
+    public static void setQuestionToTheMentor(int questionToTheMentor) {
+        SharedTestData.questionToTheMentor = questionToTheMentor;
+    }
+
+    public static int getAnswerToTheMentor() {
+        return answerToTheMentor;
+    }
+
+    public static void setAnswerToTheMentor(int answerToTheMentor) {
+        SharedTestData.answerToTheMentor = answerToTheMentor;
+    }
+
+    private static int questionToTheMentor;
+
+    private static int answerToTheMentor;
+
     public static int getEnrolledCourseId() {
         return enrolledCourseId;
     }
@@ -122,5 +144,13 @@ public final class SharedTestData {
 
     public static void setAnswerIdToThePeers(int answerIdToThePeers) {
         SharedTestData.answerIdToThePeers = answerIdToThePeers;
+    }
+
+    public static int getMentorId() {
+        return mentorId;
+    }
+
+    public static void setMentorId(int mentorId) {
+        SharedTestData.mentorId = mentorId;
     }
 }

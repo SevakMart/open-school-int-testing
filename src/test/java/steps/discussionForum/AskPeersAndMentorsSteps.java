@@ -2,11 +2,10 @@ package steps.discussionForum;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import manager.DeleteManager;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.Assertions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import providers.bodyProviders.BodyProvider;
 import providers.dataProviders.Endpoints;
 import providers.dataProviders.SharedTestData;
@@ -14,8 +13,6 @@ import steps.BaseSteps;
 import utils.api.RequestsUtils;
 import utils.api.ResponseUtils;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class AskPeersAndMentorsSteps extends BaseSteps {
 
@@ -111,5 +108,68 @@ public class AskPeersAndMentorsSteps extends BaseSteps {
     @Then("Get peersQuestionId")
     public void getPeersQuestionId() {
         SharedTestData.setQuestionIdToThePeers(ResponseUtils.getIntFromResponse("id"));
+    }
+
+    @When("Get mentors id")
+    public void getMentorsId() {
+        RequestsUtils.get("mentors", SharedTestData.getToken());
+        SharedTestData.setMentorId(ResponseUtils.getIntFromResponse("content[0].id"));
+    }
+
+    @And("Create question to mentor")
+    public void createQuestionToMentor() {
+        text = "QuestionToMentor " + RandomStringUtils.randomAlphabetic(5);
+        params.put("text", text);
+        logger.info("The question for mentor is -> {}", text);
+        String body = BodyProvider.getBody("questionToPeers", params);
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_THE_MENTOR.url, body, pathVariables);
+        SharedTestData.setQuestionToTheMentor(ResponseUtils.getIntFromResponse("id"));
+    }
+
+    @Then("Delete the question to the mentor")
+    public void deleteTheQuestionToTheMentor() {
+        DeleteManager deleteManager = new DeleteManager();
+        deleteManager.deleteQuestionToTheMentor(SharedTestData.getQuestionToTheMentor());
+        deleteManager.deleteEnrolledCourse(SharedTestData.getEnrolledCourseId());
+    }
+
+    @And("Create question to mentor for the not enrolled course")
+    public void createQuestionToMentorForTheNotEnrolledCourse() {
+        text = "QuestionToMentors " + RandomStringUtils.randomAlphabetic(5);
+        params.put("text", text);
+        logger.info("The question for mentor is -> {}", text);
+        pathVariables.put("enrolledCourseId", 3);
+        body = BodyProvider.getBody("questionToPeers", params);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_THE_MENTOR.url, body, pathVariables);
+    }
+
+    @And("Create question to the mentor with non-existed course")
+    public void createQuestionToTheMentorWithNonExistedCourse() {
+        text = "QuestionToMentor " + RandomStringUtils.randomAlphabetic(5);
+        params.put("text", text);
+        logger.info("The question for mentor is -> {}", text);
+        pathVariables.put("enrolledCourseId", 0);
+        body = BodyProvider.getBody("questionToPeers", params);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_THE_MENTOR.url, body, pathVariables);
+    }
+
+    @And("Create question to mentor where the user has up to {int} symbols")
+    public void createQuestionToMentorWhereTheUserHasUpToSymbolsCountSymbols(int symbolsCount) {
+        text = RandomStringUtils.randomAlphabetic(symbolsCount);
+        logger.info("The question for mentor is -> {}", text);
+        params.put("text", text);
+        body = BodyProvider.getBody("questionToPeers", params);
+        int enrolledCourseId = SharedTestData.getEnrolledCourseId();
+        pathVariables.put("enrolledCourseId", enrolledCourseId);
+        logger.info("EnrolledCourseId is ---->{}", enrolledCourseId);
+        RequestsUtils.post(Endpoints.ADD_QUESTIONS_TO_THE_MENTOR.url, body, pathVariables);
+    }
+
+    @Then("Get mentorsQuestionId")
+    public void getMentorsQuestionId() {
+        SharedTestData.setQuestionToTheMentor(ResponseUtils.getIntFromResponse("id"));
     }
 }
