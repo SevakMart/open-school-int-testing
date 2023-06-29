@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/features/discussionForum/GettingQuestionsAndAnswersById.feature",
+        features = "src/test/java/features/auth/Password.feature",
         glue = {"steps"}
 )
 public class TestRunner {
